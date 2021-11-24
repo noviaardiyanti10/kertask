@@ -1,0 +1,18 @@
+body {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.logo {
+    width: 9rem;
+}
+
+
+/* .page1 {
+    paddin;
+}  */
+
+.page1 img {
+    width: 100%;
+}
