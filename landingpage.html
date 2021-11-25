@@ -6,96 +6,209 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat&family=Open+Sans&family=Poppins&family=Quicksand&family=Roboto&family=Source+Sans+Pro:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Taskily</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid px-4 py-1">
-            <a class="navbar-brand" href="#"><img src="/assets/img/logo.png" alt="logo" class="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <h3 class="navbar-brand fw-bold mx-4" href="#">KerTask</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page">Fitur</a>
+                        </li>
 
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link active fw-bold px-4" aria-current="page" href="#">Home</a>
-                    <a class="nav-link  active px-4" href="#">Features</a>
-                    <a class="nav-link active px-4" href="#">Pricing</a>
-                    <a class="nav-link active px-4" href="#">About Us</a>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" href="#page2" tabindex="-1" aria-disabled="true">Tentang</a>
+                        </li>
+
+                    </ul>
+                    <div class="d-flex align-items-center mx-3">
+                        <i class="far fa-user-circle fs-3"></i>
+                    </div>
+                    <div class="d-flex">
+                        <a class="nav-link active px-4" href="#"><button class="btn btn-primary" type="submit">Register</button></a>
+                    </div>
+
+                    <!-- <div class="d-flex align-items-center mx-5 logout-btn">
+                    <a href="/logout">
+                        <button class="btn btn-dark fw-bold fs-6" type="button">Logout</button>
+                    </a>
+                </div> -->
                 </div>
             </div>
-        </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <section class="container-fluid page1 my-3">
-        <div class="row py-5">
-            <div class="col-md-5 py-5 px-4">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h1>Optimize your daily work,</h1>
+    <section class="container-fluid page1 mt-5">
+
+        <div class="row py-5" data-aos="fade-down">
+            <div class="col-md-5 pt-5 px-4">
+                <div class="d-flex flex-wrap align-items-center">
+                    <h3>Yuk atur tugasmu dengan</h3>
                 </div>
                 <div class="d-flex flex-wrap py-2">
-                    <h4>With Taskily</h4>
+                    <h2 class="fw-bold">KerTask!</h2>
                 </div>
-                <div class="d-flex mb-5">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel nihil deleniti at unde quae magni dicta cum eum culpa quo sit beatae nesciunt obcaecati vero perferendis, delectus neque deserunt! Quae!
+                <div class="d-flex mb-5 my-3">
+                    KerTask siap membantu kamu untuk mengatur tugas dan waktu harianmu jadi lebih efektif dan produktif. KerTask juga memberikan laporan untuk tugasmu loh!
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type=" submit " class="btn btn-info text-white rounded-pill px-5 py-3 ">Join Us!</button>
+                    <button type=" submit " class="btn btn-info text-white rounded-pill px-5 py-3 ">Get Started</button>
                     <button type="submit " class="btn btn-secondary text-white rounded-pill px-5 py-3 mx-3 ">Learn More</button>
                 </div>
             </div>
             <div class="col-md-7 ">
-                <div class="d-flex justify-content-end align-items-center ">
+                <div class="d-flex justify-content-end align-items-center">
                     <img src="/assets/img/undraw_Thought_process_re_om58.png " alt="management ">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container-fluid page2  d-flex justify-content-center align-items-center">
-        <div class="row ">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+    <section class="container-fluid page2 d-flex justify-content-center align-items-center" id="page2">
+        <div class="row">
+            <div class="col-md-4 cek" data-aos="fade-up">
+                <h4>Kenapa harus memilih</h4>
+                <h3 class="fw-bold mb-3">KerTask<img src="./assets/img/right-arrow.png" alt="arrow"></h3>
+                <p class="text-secondary">KerTask memiliki banyak manfaat yang siap membantu kamu untuk menyelesaikan tugas dengan tepat waktu</p>
+                <!-- <p class=" fw-bold mb-0 cek">Yuk cek!</p> -->
+
+            </div>
+            <div class="col-md-6 d-flex align-items-center cek1 my-5" data-aos="fade-up" data-aos-delay="400">
+                <div class="row ">
+                    <div class=" col-5 col-md-6 p-0 ">
+                        <div class="card ">
+                            <div class="card-body ">
+                                <img src="/assets/img/laptop (1).png " alt="laptop " class="mx-auto d-block">
+                                <h5 class=" card-title pt-4 fw-bold text-center ">Easy</h5>
+                                <p class="card-text text-center  ">KerTask mudah digunakan dengan disediakannya fitur-fitur yang siap membantu kamu.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 p-0 ">
+                        <div class="card ">
+                            <div class="card-body ">
+                                <img src="/assets/img/time-management.png " alt="time " class="mx-auto d-block">
+                                <h5 class="card-title pt-4 fw-bold text-center">Set time and due date</h5>
+                                <p class="card-text text-center">Kamu bisa atur waktu dan durasi pengerjaan sesuai dengan deadline tugas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 p-0">
+                        <div class="card ">
+                            <div class="card-body ">
+                                <img src="/assets/img/to-do-list.png " alt="list " class="mx-auto d-block">
+                                <h5 class="card-title pt-4 fw-bold text-center">Task priority</h5>
+                                <p class="card-text text-center">Buat list tugas yang akan dikerjakan dan tentukan prioritasnya.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 p-0 ">
+                        <div class="card ">
+                            <div class="card-body ">
+                                <img src="/assets/img/report.png " alt="report " class="mx-auto d-block">
+                                <h5 class="card-title pt-4 fw-bold text-center">Track progress</h5>
+                                <p class="card-text text-center ">KerTask akan memberikan laporan persentase capaian tugas yang dikerjakan.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
+    </section>
+
+    <section class="container-fluid page3 my-5" id="page3">
+        <div class="row mx-4 mb-4">
+            <div class="col-lg-6" data-aos="fade-down">
+                <h6 class="text-secondary py-1">Fitur KerTask</h6>
+                <h5 class="fw-bold">Mengerjakan tugas dengan cara yang berbeda dan menarik</h5>
+                <p class="text-secondary">Membuat dan mengatur waktu pengerjaan, deadline, membuat list tugas dan lihat reportnya</p>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6  d-flex justify-content-end" data-aos="fade-up-right" data-aos-delay="400">
+                <img src="./assets/img/undraw_Process_re_gws7.png" alt="board" srcset="">
+            </div>
+
+            <div class="col-md-6 py-5" data-aos="fade-up-left" data-aos-delay="400">
+                <h5 class="fw-bold">Board</h5>
+                <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe ipsa culpa consequatur error a non sit, id quo, numquam minima debitis minus, consequuntur illo necessitatibus vel nam reprehenderit veniam?</p>
+            </div>
+        </div>
+        <div class="row mx-4">
+            <div class="col-md-6 py-5" data-aos="fade-up-right">
+                <h5 class="fw-bold">Task</h5>
+                <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe ipsa culpa consequatur error a non sit, id quo, numquam minima debitis minus, consequuntur illo necessitatibus vel nam reprehenderit veniam?</p>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up-left">
+                <img src="./assets/img/undraw_Process_re_gws7.png" alt="board" srcset="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6  d-flex justify-content-end" data-aos="fade-up-right">
+                <img src="./assets/img/undraw_Process_re_gws7.png" alt="board" srcset="">
+            </div>
+
+            <div class="col-md-6 py-5" data-aos="fade-up-left">
+                <h5 class="fw-bold">Report</h5>
+                <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe ipsa culpa consequatur error a non sit, id quo, numquam minima debitis minus, consequuntur illo necessitatibus vel nam reprehenderit veniam?</p>
+            </div>
+        </div>
     </section>
+
+    <footer class="container-fluid footer" data-aos="fade-up">
+        <div class="row py-4">
+            <div class="col-md-4 px-5">
+                <h5 class="fw-bold">KerTask</h5>
+                <p class="text-secondary"><i class="fas fa-building px-2"></i>Jalan Pahlawan I Wayan Lejeh, Kec. Kerambitan, Kab. Tabanan, Bali(82161)</p>
+            </div>
+
+            <div class="col-md-4  text-center">
+                <h5 class="fw-bold">Dukungan</h5>
+                <ul class="p-0">
+                    <li class="list-unstyled">
+                        <a href="#" class="text-decoration-none text-dark">Laporkan</a>
+                    </li>
+                    <li class="list-unstyled py-2">
+                        <a href="#" class="text-decoration-none text-dark">Kontak</a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a href="#" class="text-decoration-none text-dark">Fitur</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+                <h5 class="fw-bold">Kontak</h5>
+                <!-- <p class="fw-bold m-0">Author</p>
+                <p class="m-0">Ni Putu Novia Ardiyanti</p> -->
+                <p class="fw-bold m-0">Email</p>
+                <p><i class="far fa-envelope"></i> putunovia546@gmail.com</p>
+                <p class="fw-bold m-0">Phone Number</p>
+                <p class="m-0"><i class="fas fa-phone"></i> +62 8xxx 7xxx 9xxx</p>
+            </div>
+        </div>
+    </footer>
 
 
 
@@ -103,6 +216,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js " integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF " crossorigin="anonymous "></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./assets/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

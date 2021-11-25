@@ -2,17 +2,45 @@ body {
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .logo {
     width: 9rem;
 }
 
-
-/* .page1 {
-    paddin;
-}  */
-
 .page1 img {
     width: 100%;
+}
+
+.page2 .card {
+    width: 18rem;
+    height: 15rem;
+    border: 0;
+}
+
+.page2 img {
+    width: 4rem;
+}
+
+.page2 .cek {
+    padding-left: 4rem;
+    padding-top: 8rem;
+}
+
+.page2 .cek1 {
+    padding-left: 8rem;
+}
+
+.page3 img {
+    width: 75%;
+}
+
+.footer {
+    background-color: rgb(207, 228, 228);
+}
+
+.footer p,
+a {
+    font-size: 0.85rem;
 }
