@@ -1,8 +1,10 @@
+html,
 body {
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -14,8 +16,6 @@ body {
 }
 
 .page2 .card {
-    width: 18rem;
-    height: 15rem;
     border: 0;
 }
 
@@ -23,24 +23,23 @@ body {
     width: 4rem;
 }
 
-.page2 .cek {
-    padding-left: 4rem;
+.page2 .benefit {
     padding-top: 8rem;
-}
-
-.page2 .cek1 {
-    padding-left: 8rem;
 }
 
 .page3 img {
     width: 75%;
 }
 
-.footer {
-    background-color: rgb(207, 228, 228);
+footer {
+    background-color: rgb(25, 36, 49);
+    width: 100%;
 }
 
-.footer p,
-a {
-    font-size: 0.85rem;
+footer .instagram {
+    width: 1rem;
+}
+
+footer hr {
+    color: aliceblue;
 }

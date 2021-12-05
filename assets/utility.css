@@ -1,0 +1,142 @@
+@media (max-width:576px) {
+    body {
+        width: 100% !important;
+        height: 100%;
+        margin: 0 !important;
+        padding: 0;
+    }
+    .button {
+        display: none !important;
+    }
+    .page1 img {
+        display: none;
+    }
+    .page1 .intro {
+        text-align: center;
+        padding-left: 1rem;
+    }
+    .page2 {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .benefit .arrow {
+        display: none;
+    }
+    .benefit h4 {
+        padding-left: 3rem 0;
+    }
+    .page2 .items {
+        margin-top: 0 !important;
+        padding-right: 3rem;
+    }
+    .page2 .benefit {
+        padding-top: 1rem;
+    }
+    footer {
+        width: 100%;
+    }
+    footer h5,
+    p {
+        font-size: 0.8rem !important;
+    }
+    footer .title {
+        display: none;
+    }
+    .login {
+        padding-top: 0 !important;
+    }
+    .login .row {
+        border-radius: 0;
+        padding-top: 1.7rem;
+        padding-bottom: 2rem;
+        margin: 3rem 0.5rem 0 0.5rem!important;
+    }
+    .mobile-login .form-check,
+    .form-floating {
+        font-size: 0.8rem;
+    }
+    .mobile-login button {
+        width: 13rem !important;
+        padding: 0.6rem !important;
+        font-size: 0.8rem;
+    }
+    .mobile-login p {
+        font-size: 0.68rem !important;
+    }
+    .register .card {
+        width: 100%;
+    }
+    .card h3 {
+        font-size: 1.2rem;
+    }
+    .card label {
+        font-size: 0.65rem;
+    }
+    .regis-button button {
+        font-size: 0.7rem !important;
+    }
+    .register .card-title {
+        margin-bottom: 0.65rem !important;
+    }
+    .register input,
+    .register textarea {
+        font-size: 0.7rem;
+    }
+    .regis-button {
+        margin-bottom: 0!important;
+    }
+    footer a {
+        font-size: 0.65rem;
+    }
+    .last-col {
+        border-right: 0.05rem solid rgb(216, 216, 216);
+    }
+    .sidebar-nav {
+        width: 2rem !important;
+    }
+    .side-navbar ul {
+        padding: 0.2rem !important;
+    }
+    .side-navbar a {
+        font-size: 0.7rem;
+    }
+    .side-navbar li {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    .side-navbar .navbar-brand {
+        margin-right: 0 !important;
+        padding: 1rem !important;
+    }
+    .side-navbar .logout {
+        padding-top: 3rem !important;
+    }
+    .main {
+        margin-left: 6rem;
+    }
+    .navbar img {
+        width: 0.9rem;
+    }
+    .navbar p {
+        font-size: 0.65rem !important;
+        /* padding: 0.9rem !important; */
+    }
+    .navbar i {
+        font-size: 1.6rem;
+    }
+    .photos {
+        width: 1.8rem !important;
+        height: 1.8rem !important;
+    }
+    .board-card .card-title {
+        font-size: 0.55rem !important;
+        margin-bottom: 0;
+    }
+    .board-card p {
+        font-size: 0.4rem !important;
+    }
+    .board-card .card-body {
+        padding: 0.5rem;
+    }
+}

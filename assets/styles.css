@@ -1,0 +1,420 @@
+body {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    /* overflow-y: hidden; */
+}
+
+.login img {
+    width: 75%;
+    margin-left: 4rem;
+}
+
+.login .row {
+    margin: 1.3rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.938);
+}
+
+.login-page {
+    background-image: url(../assets/img/SL_043021_42650_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.register .card {
+    width: 50%;
+    padding-left: 2rem;
+    background-color: rgba(255, 255, 255, 0.884);
+}
+
+.google img {
+    width: 1rem;
+}
+
+
+/* .home {
+    overflow-x: hidden;
+} */
+
+.register {
+    background-image: url(../assets/img/3512700.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.side-navbar {
+    background-color: rgb(242, 249, 253);
+    transition: 0.4s;
+    width: max-content;
+    height: 100vh;
+    margin-left: -19rem;
+    padding-bottom: 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.side-navbar a {
+    text-decoration: none;
+    color: black !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem !important;
+    background: linear-gradient(to right, #65ffff 0%, #98b62a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.side-navbar ul {
+    padding-right: 0 !important;
+}
+
+.side-navbar a:focus,
+.side-navbar a:active,
+.side-navbar a:hover {
+    color: rgb(89, 41, 179) !important;
+    font-weight: bold;
+    background-color: rgba(89, 41, 179, 0.219) !important;
+    border-radius: 0.4rem;
+}
+
+.active-bar {
+    margin-left: 0;
+}
+
+.main {
+    margin-left: 11rem;
+    /* margin-top: 10rem; */
+    /* width: 100%; */
+}
+
+.board-nav {
+    margin-left: 11rem !important;
+    transition: 0.5s;
+}
+
+.navbar {
+    transition: 0.5s;
+}
+
+.board-content {
+    overflow-y: hidden;
+}
+
+
+/* .board-title {
+    margin-top: 5.5rem;
+} */
+
+
+/* .navbar {
+    background-color: rgba(208, 235, 236, 0.671);
+} */
+
+.navbar img {
+    width: 1.5rem;
+}
+
+.navbar p {
+    font-size: 1.1rem;
+}
+
+.side-navbar a {
+    font-size: 0.95rem;
+}
+
+.side-navbar .nav-link i {
+    font-size: 0.95rem;
+}
+
+.navbar i {
+    font-size: 1.6rem;
+}
+
+.my-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 5rem;
+    transition: 0.5s !important;
+}
+
+
+/* #board-main {} */
+
+.side-navbar .navbar-brand {
+    margin-bottom: 0 !important;
+}
+
+.content-home {
+    width: 100%;
+    height: 100vh;
+    /* overflow-x: auto; */
+    background-color: rgba(255, 255, 255, 0.753);
+}
+
+.content-home h5 {
+    color: rgb(28, 95, 102)
+}
+
+.content-home .card {
+    border-radius: 0.8rem;
+}
+
+.card-title .card {
+    font-size: 1.1rem;
+}
+
+.card-link .card {
+    width: 15.5rem;
+}
+
+#card-all {
+    background-color: rgb(251, 255, 244);
+    /* width: max-content; */
+}
+
+.card-reminder {
+    background: linear-gradient(to top right, #e8fdfd 40%, #ffffff 80%);
+    border-radius: 0.8rem;
+    /* width: max-content; */
+}
+
+.text-content {
+    font-size: 1.2rem;
+}
+
+.text-desc {
+    font-size: 0.9rem;
+}
+
+.text-board {
+    font-size: 0.8rem;
+}
+
+#card-1 {
+    background-color: rgba(253, 123, 177, 0.897);
+    width: 18rem;
+    height: 100%;
+}
+
+#card-2 {
+    background-color: rgb(253, 205, 115);
+    width: 18rem;
+    height: 100%;
+}
+
+.percent {
+    font-size: 0.9rem;
+}
+
+.header button {
+    width: max-content;
+}
+
+.header {
+    background: linear-gradient(rgba(222, 255, 218, 0.6), rgba(253, 255, 247, 0.226)), url(../assets/img/Abstract\ Duotone\ Yellow\ Zoom\ Background.jpg);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* opacity: 0.5; */
+}
+
+.fa-angle-right {
+    font-size: 1.8rem;
+    color: #4c178a;
+}
+
+#footer-login {
+    transition: 0.4s;
+}
+
+.footer-user {
+    margin-left: 12rem;
+}
+
+.footer-user p {
+    font-size: 0.9rem;
+}
+
+.form-check-input:checked {
+    background-color: black !important;
+}
+
+.photos {
+    width: 2.5rem !important;
+    height: 2.5rem;
+}
+
+#todo-board {
+    background: linear-gradient(to top right, #98d1d1 35%, #f8c7ff 80%);
+}
+
+#progress-board {
+    background: linear-gradient(to top right, #f7caa5 40%, #dfb4f7 80%);
+}
+
+#finish-board {
+    background: linear-gradient(to top right, #a5f7a5 40%, #f7f5b4 80%);
+}
+
+.todo-card {
+    background: linear-gradient(to top right, #c0eeee 35%, #f1d2f5 80%);
+    min-width: 25rem;
+    max-width: 25rem;
+    margin-right: 1rem;
+}
+
+.text-date {
+    font-size: 0.8rem !important;
+}
+
+.board-nav {
+    margin-left: 11rem;
+}
+
+.navbar {
+    background-color: rgba(242, 249, 253, 0.753);
+}
+
+.board-menu {
+    padding-top: 1rem;
+}
+
+.board-menu h4 {
+    width: 7rem;
+    height: max-content;
+    font-size: 1.3rem;
+    background-color: #c0e5ddaf;
+}
+
+.board-card {
+    min-height: max-content;
+    max-height: 26rem;
+    overflow: auto!important;
+}
+
+.text-pro {
+    width: 10rem;
+    height: max-content;
+    font-size: 1.3rem;
+    background-color: #e5c0e5af;
+}
+
+.text-done {
+    width: 10rem;
+    height: max-content;
+    font-size: 1.3rem;
+    background-color: #dee5c0af;
+}
+
+.prog-card {
+    background: linear-gradient(to top right, #eedac0 35%, #eed2f5 80%);
+    min-width: 23rem;
+    max-width: 23rem;
+    margin-right: 1rem;
+}
+
+.finish-card {
+    background-color: #aad4cdbd;
+    background-repeat: repeat;
+    margin-right: 1rem;
+}
+
+.home .modal-content {
+    background: linear-gradient(to top right, #d8dee7 35%, #eff5d2 80%);
+}
+
+.btn-add {
+    width: 10rem;
+    height: max-content;
+    font-size: 1rem;
+    background-color: #54758691;
+}
+
+.todo-card .card-title {
+    font-size: 1.5rem !important;
+    margin-left: 4rem;
+}
+
+.update-task {
+    overflow-x: hidden;
+    height: 100% !important;
+    width: 100%;
+    background-color: #aad4cd;
+    background-repeat: repeat;
+}
+
+.update-task .card {
+    width: 50%;
+    height: max-content;
+}
+
+.report-page {
+    background-color: rgba(205, 236, 247, 0.63);
+    border-radius: 1rem;
+}
+
+.report-content {
+    overflow-x: hidden;
+}
+
+.card-report {
+    min-width: 18rem !important;
+    max-width: 18rem !important;
+}
+
+.card-report .card {
+    background: linear-gradient(to top right, #eee0cf 40%, #e9d7f3 80%);
+}
+
+.card-report p {
+    font-size: 0.9rem;
+}
+
+.task-info i {
+    background-color: #63b0b3 !important;
+    background-repeat: repeat;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -18rem !important;
+}
+
+.status {
+    color: #409497 !important;
+}
+
+.filter a {
+    background-color: #62ad8ec4;
+    min-width: 3rem;
+}
+
+
+/*If task list is completed*/
+
+.is-completed {
+    text-decoration: line-through;
+}
+
+.profile .card {
+    width: 50rem;
+}
+
+.profile img {
+    width: 7.5rem;
+    height: 6rem;
+}
+
+.profile {
+    background-color: rgb(128, 192, 216);
+}
+
+.profile-page {
+    overflow-x: hidden;
+    background-color: rgba(167, 211, 228, 0.363);
+}
