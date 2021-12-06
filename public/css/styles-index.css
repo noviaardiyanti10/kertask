@@ -1,5 +1,4 @@
-html,
-body {
+.landing-page {
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
@@ -31,15 +30,15 @@ body {
     width: 75%;
 }
 
-footer {
+.landing-page footer {
     background-color: rgb(25, 36, 49);
     width: 100%;
 }
 
-footer .instagram {
+.landing-page footer .instagram {
     width: 1rem;
 }
 
-footer hr {
+.landing-page hr {
     color: aliceblue;
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partial/head.ejs") %>
+
+    <body class="login-page">
+
+        <div class="container-fluid py-3 login ">
+            <div class="row shadow-lg">
+                <div class="col-lg-6 bg-warning d-none d-md-block">
+                    <img src="../img/Hello-cuate.png" alt="hello">
+                </div>
+                <div class="col-md-12 col-lg-4 pt-3 mx-auto mobile-login">
+                    <h1 class="text-center text-warning fw-bold">Welcome!</h1>
+                    <p class="pb-4 text-center text-secondary">Please enter your email and password</p>
+
+                    <form method="post" action="">
+                        <div class="form-floating my-2 ">
+                            <input type="text" class="form-control" id="floatingInput" name="email" placeholder="youremail@example.com" required>
+                            <label class="form-label" for=" floatingInput">Email</label>
+                        </div>
+
+                        <div class=" form-floating mb-3">
+                            <input type="password " class="form-control" id="floatingInput " name="password" placeholder="Password" required>
+                            <label for="floatingInput">Password</label>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center mb-2">
+                            <button class="btn btn-info text-white p-3 w-75 fw-bold rounded-pill" type="submit">LOGIN</button>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <h6 class="text-secondary">Atau</h6>
+                        </div>
+
+                        <div class="google d-flex justify-content-center align-items-center mb-2">
+                            <button class="btn btn-light text-dark p-3 w-75 fw-bold rounded-pill" type="submit"> <img src="../img/google.png" alt="google" class="mx-2">Login dengan Google</button>
+                        </div>
+
+                        <hr>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#">
+                                <p class="text-secondary">Belum punya akun? Daftar</p>
+                            </a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include("../partial/script.ejs") %>
+
+    </body>
+
+</html>

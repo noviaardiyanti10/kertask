@@ -5,6 +5,50 @@ body {
     /* overflow-y: hidden; */
 }
 
+.landing-page {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    width: 9rem;
+}
+
+.page1 img {
+    width: 100%;
+}
+
+.page2 .card {
+    border: 0;
+}
+
+.page2 img {
+    width: 4rem;
+}
+
+.page2 .benefit {
+    padding-top: 8rem;
+}
+
+.page3 img {
+    width: 75%;
+}
+
+.landing-page footer {
+    background-color: rgb(25, 36, 49);
+    width: 100%;
+}
+
+.landing-page footer .instagram {
+    width: 1rem;
+}
+
+.landing-page hr {
+    color: aliceblue;
+}
+
 .login img {
     width: 75%;
     margin-left: 4rem;
@@ -17,16 +61,17 @@ body {
 }
 
 .login-page {
-    background-image: url(../assets/img/SL_043021_42650_02.jpg);
+    background-image: url(../img/SL_043021_42650_02.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 .register .card {
+    margin-top: 6rem !important;
     width: 50%;
-    padding-left: 2rem;
-    background-color: rgba(255, 255, 255, 0.884);
+    /* padding-left: 2rem; */
+    background-color: rgba(227, 234, 241, 0.863);
 }
 
 .google img {
@@ -39,7 +84,7 @@ body {
 } */
 
 .register {
-    background-image: url(../assets/img/3512700.jpg);
+    background-image: url(../img/3512700.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -218,7 +263,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(rgba(222, 255, 218, 0.6), rgba(253, 255, 247, 0.226)), url(../assets/img/Abstract\ Duotone\ Yellow\ Zoom\ Background.jpg);
+    background: linear-gradient(rgba(222, 255, 218, 0.6), rgba(253, 255, 247, 0.226)), url(../img/Abstract\ Duotone\ Yellow\ Zoom\ Background.jpg);
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -236,10 +281,11 @@ body {
 
 .footer-user {
     margin-left: 12rem;
+    /* margin-top: 12rem; */
 }
 
-.footer-user p {
-    font-size: 0.9rem;
+.text-footer {
+    font-size: 0.85rem !important;
 }
 
 .form-check-input:checked {
@@ -356,7 +402,7 @@ body {
 }
 
 .report-page {
-    background-color: rgba(205, 236, 247, 0.63);
+    background-color: rgba(220, 236, 241, 0.63);
     border-radius: 1rem;
 }
 
@@ -403,6 +449,7 @@ body {
 
 .profile .card {
     width: 50rem;
+    height: 38rem;
 }
 
 .profile img {
