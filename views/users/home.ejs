@@ -153,20 +153,20 @@
 
                                     <h4 class="modal-title fw-bold" id="staticBackdropLabel">Board</h4>
 
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button id="staticBackdropCloseButton" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <form action="" method="post">
+                                <form id="board-form" action="" method="post" >
+                                    <div class="modal-body">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="floatingInput" name="board_name" placeholder="youremail@example.com" required>
                                             <label class="form-label" for=" floatingInput">Name</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                    <button type="button" class="btn btn-primary">Create</button>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                        <button id="board-form-submit" type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -183,3 +183,41 @@
     </body>
 
 </html>
+
+<script>
+
+    // board-form on submit in javascript vanilla
+    document.getElementById('board-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let button = document.getElementById('board-form-submit');
+        button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;        
+
+        let form = document.getElementById('board-form');
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });        
+
+        axios.post('board', jsonData)
+        .then(function (response) {
+            console.log(response);
+
+            // close modal vanilla js
+            document.getElementById('staticBackdropCloseButton').click();
+
+            // empty form
+            document.getElementById('board-form').reset();
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Create';
+            button.disabled = false;
+        });
+
+    });
+
+</script>

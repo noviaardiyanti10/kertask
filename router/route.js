@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const {
     landingPage,
     homePage,
@@ -12,9 +13,12 @@ const {
     reportPage
 } = require('../controllers/userController')
 
+const { boardStore } = require('../controllers/boardController')
+
 router.get('/', homePage)
 router.get('/landing', landingPage)
 router.get('/board', boardPage)
+router.post('/board', boardStore)
 router.get('/current-board', currentBoardPage)
 router.get('/login', loginPage)
 router.get('/register', registerPage)
