@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            Task.hasOne(models.userboard, {
-                foreignKey: 'task_id'
+            Task.belongsTo(models.userboard, {
+                foreignKey: 'board_id'
             })
 
             Task.hasMany(models.lists, {
@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     };
     Task.init({
         title: DataTypes.STRING,
+        board_id: DataTypes.INTEGER,
         description: DataTypes.STRING,
         start_date: DataTypes.DATE,
         due_date: DataTypes.DATE,
