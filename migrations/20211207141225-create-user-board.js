@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     up: async(queryInterface, Sequelize) => {
-        await queryInterface.createTable('Tasks', {
+        await queryInterface.createTable('userBoards', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -10,26 +10,21 @@ module.exports = {
                 onDelete: 'cascade',
                 onUpdate: 'cascade'
             },
-            title: {
+            board_name: {
                 type: Sequelize.STRING
             },
-            description: {
-                type: Sequelize.STRING
-            },
-            start_date: {
-                type: Sequelize.DATE
-            },
-            due_date: {
-                type: Sequelize.DATE
-            },
-            duration: {
-                type: Sequelize.INTEGER
-            },
-            percentage: {
-                type: Sequelize.INTEGER
-            },
-            status: {
-                type: Sequelize.STRING
+            user_id: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: {
+                        tableName: "Users",
+
+                    },
+                    key: "id",
+                },
+                allowNull: true,
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
             },
             createdAt: {
                 allowNull: false,
@@ -42,6 +37,6 @@ module.exports = {
         });
     },
     down: async(queryInterface, Sequelize) => {
-        await queryInterface.dropTable('Tasks');
+        await queryInterface.dropTable('userBoards');
     }
 };

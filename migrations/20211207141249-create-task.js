@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     up: async(queryInterface, Sequelize) => {
-        await queryInterface.createTable('userBoards', {
+        await queryInterface.createTable('Tasks', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -10,34 +10,39 @@ module.exports = {
                 onDelete: 'cascade',
                 onUpdate: 'cascade'
             },
-            board_name: {
+            board_id: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: {
+                        tableName: "userBoards",
+
+                    },
+                    key: "id",
+                },
+                allowNull: true,
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            },
+            title: {
                 type: Sequelize.STRING
             },
-            user_id: {
-                type: Sequelize.INTEGER,
-                references: {
-                    model: {
-                        tableName: "Users",
-
-                    },
-                    key: "id",
-                },
-                allowNull: true,
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+            description: {
+                type: Sequelize.STRING
             },
-            task_id: {
-                type: Sequelize.INTEGER,
-                references: {
-                    model: {
-                        tableName: "Tasks",
-
-                    },
-                    key: "id",
-                },
-                allowNull: true,
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+            start_date: {
+                type: Sequelize.DATE
+            },
+            due_date: {
+                type: Sequelize.DATE
+            },
+            duration: {
+                type: Sequelize.INTEGER
+            },
+            percentage: {
+                type: Sequelize.INTEGER
+            },
+            status: {
+                type: Sequelize.STRING
             },
             createdAt: {
                 allowNull: false,
@@ -50,6 +55,6 @@ module.exports = {
         });
     },
     down: async(queryInterface, Sequelize) => {
-        await queryInterface.dropTable('userBoards');
+        await queryInterface.dropTable('Tasks');
     }
 };

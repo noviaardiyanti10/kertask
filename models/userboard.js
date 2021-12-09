@@ -13,15 +13,14 @@ module.exports = (sequelize, DataTypes) => {
             userBoard.belongsTo(models.User, {
                 foreignKey: "user_id"
             });
-            userBoard.belongsTo(models.Task, {
-                foreignKey: "task_id"
+            userBoard.hasMany(models.Task, {
+                foreignKey: "board_id"
             });
         }
     };
     userBoard.init({
         board_name: DataTypes.STRING,
-        user_id: DataTypes.INTEGER,
-        task_id: DataTypes.INTEGER
+        user_id: DataTypes.INTEGER
     }, {
         sequelize,
         modelName: 'userBoard',
