@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            Task.belongsTo(models.userboard, {
+            Task.belongsTo(models.userBoard, {
                 foreignKey: 'board_id'
             })
 
-            Task.hasMany(models.lists, {
+            Task.hasMany(models.List, {
                 foreignKey: 'task_id'
             })
         }
