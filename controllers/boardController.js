@@ -13,7 +13,23 @@ const store = async (req, res) => {
     });
 }
 
+const index = async (req, res) => {
+
+    // get all boards using userBoard sequelize model with promise
+    const boards = await db.userBoard.findAll({
+        where: {
+            user_id: 1
+        }
+    });
+
+    res.render('users/board-page', {
+        title: "Board",
+        boards
+    })
+}
+
 
 module.exports = {
     boardStore : store,
+    boardPage : index,
 }

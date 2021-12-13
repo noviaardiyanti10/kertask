@@ -4,7 +4,6 @@ const router = express.Router();
 const {
     landingPage,
     homePage,
-    boardPage,
     currentBoardPage,
     loginPage,
     registerPage,
@@ -13,7 +12,7 @@ const {
     reportPage
 } = require('../controllers/userController')
 
-const { boardStore } = require('../controllers/boardController')
+const { boardStore, boardPage } = require('../controllers/boardController')
 
 router.get('/', homePage)
 router.get('/landing', landingPage)

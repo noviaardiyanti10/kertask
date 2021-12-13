@@ -10,7 +10,15 @@
                 <div class="px-3 content-home">
                     <h4 class="fw-bold rounded d-flex justify-content-center align-items-center py-2 mb-0">Board</h4>
                     <div class="row my-4">
-                        <div class="col-6 col-md-4 mb-4">
+
+                        <!-- create for loop-->                        
+                        <% for (board of boards) { %>
+                            <%- include('../components/board-card.ejs', {
+                                board,
+                            }); %>
+                        <% } %>
+                        
+                        <!-- <div class="col-6 col-md-4 mb-4">
                             <div class="card" id="todo-board">
                                 <div class="d-flex justify-content-center d-inline-block mb-3">
                                     <div class="card-title fs-5 fw-bold  text-center pt-2">To Do</div>
@@ -36,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-6 col-md-4">
                             <div class="card" id="progress-board">
                                 <div class="card-title fs-5 fw-bold text-center pt-2">In Progress</div>
@@ -105,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>

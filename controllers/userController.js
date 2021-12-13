@@ -8,11 +8,7 @@ const homePage = (req, res) => {
         title: "Home"
     })
 }
-const boardPage = (req, res) => {
-    res.render('users/board', {
-        title: "Board"
-    })
-}
+
 const currentBoardPage = (req, res) => {
     res.render('users/current-board', {
         title: "Board"
@@ -49,7 +45,6 @@ const updateTaskPage = (req, res) => {
 module.exports = {
     landingPage,
     homePage,
-    boardPage,
     currentBoardPage,
     loginPage,
     registerPage,
