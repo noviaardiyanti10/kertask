@@ -211,6 +211,13 @@
 
             // empty form
             document.getElementById('board-form').reset();
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
+            );
+            
         }).catch(function (error) {
             console.log(error);
         }).then(function () {

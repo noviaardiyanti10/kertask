@@ -25,11 +25,6 @@ const registerPage = (req, res) => {
     })
 }
 
-const profilePage = (req, res) => {
-    res.render('users/profile-user', {
-        title: "Profile"
-    })
-}
 const reportPage = (req, res) => {
     res.render('users/report-page', {
         title: "Report"
@@ -48,7 +43,6 @@ module.exports = {
     currentBoardPage,
     loginPage,
     registerPage,
-    profilePage,
     updateTaskPage,
     reportPage
 
