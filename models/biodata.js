@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     Biodata.init({
         avatar_url: DataTypes.STRING,
         full_name: DataTypes.STRING,
-        email: DataTypes.STRING,
         birth_date: DataTypes.DATE,
         phone_number: DataTypes.STRING,
         address: DataTypes.STRING,

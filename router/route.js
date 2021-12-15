@@ -9,20 +9,30 @@ const {
     registerPage,
     updateTaskPage,
     reportPage
-} = require('../controllers/userController')
+} = require('../controllers/pageController');
 
-const { boardStore, boardPage } = require('../controllers/boardController')
-const { profilePage, profileStore } = require('../controllers/profileController')
 
-router.get('/', homePage)
-router.get('/landing', landingPage)
-router.get('/board', boardPage)
-router.post('/board', boardStore)
-router.get('/current-board', currentBoardPage)
-router.get('/login', loginPage)
-router.get('/register', registerPage)
-router.get('/profile', profilePage)
-router.post('/profile', profileStore)
-router.get('/report', reportPage)
-router.get('/update-task', updateTaskPage)
-module.exports = router
+const {registrationUser, loginUser, logoutUser}= require('../controllers/userController');
+
+
+const { boardStore, boardPage } = require('../controllers/boardController');
+const { profilePage, profileStore } = require('../controllers/profileController');
+const {checkLogin, isLogin, landingLogin} = require('../middleware/session');
+
+router.get('/home',checkLogin, homePage);
+router.get('/', landingLogin, landingPage);
+router.get('/board', checkLogin, boardPage);
+router.post('/board', checkLogin, boardStore);
+
+router.get('/current-board', checkLogin, currentBoardPage);
+router.get('/login', isLogin, loginPage);
+router.post('/login', isLogin, loginUser);
+router.get('/logout', checkLogin, logoutUser);
+router.get('/register', isLogin, registerPage);
+router.post('/register', isLogin, registrationUser);
+
+router.get('/profile', checkLogin, profilePage);
+router.post('/profile', checkLogin, profileStore);
+router.get('/report', checkLogin, reportPage);
+router.get('/update-task', checkLogin, updateTaskPage);
+module.exports = router;

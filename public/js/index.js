@@ -8,5 +8,6 @@ menu_btn.addEventListener("click", () => {
     sidebar.classList.toggle("active-bar");
     nav.classList.toggle("board-nav");
     main.classList.toggle("main");
+    main.classList.toggle("main-profile");
     footer.classList.toggle("footer-user")
 });

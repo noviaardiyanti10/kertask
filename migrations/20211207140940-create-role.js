@@ -11,7 +11,9 @@ module.exports = {
                 onUpdate: 'cascade'
             },
             role: {
-                type: Sequelize.ENUM("user", "admin"),
+                type: Sequelize.ENUM({
+                    values: ['user', 'admin']
+                }),
                 defaultValue: 'user'
             },
             createdAt: {

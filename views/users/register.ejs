@@ -5,26 +5,26 @@
 
     <body class="register ">
         <%- include("../layout/navbar.ejs") %>
-            <div class="container-fluid d-flex justify-content-center align-items-center">
+            <div class="container-fluid d-flex register-cont justify-content-center align-items-center">
                 <div class="card mb-3">
                     <div class="card-body mx-4">
                         <h3 class="card-title text-center fw-bold mt-1 mb-4">Daftar</h3>
-                        <form method="post" action="">
+                        <form method="post" action="/register">
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
-                                    <label for="name" class="fw-bold">Nama</label>
+                                    <label for="full_name" class="fw-bold">Nama</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="text" class="form-control my-1" id="name" placeholder="Masukkan nama anda" name="name">
+                                    <input type="text" class="form-control my-1" id="full_name" placeholder="Masukkan nama anda" name="full_name" required value= "<%= form ? form.full_name: ''%>" >
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
-                                    <label for="birth" class="fw-bold">Tanggal Lahir</label>
+                                    <label for="birth_date" class="fw-bold">Tanggal Lahir</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="date" class="form-control my-1" id="birth" name="birth_date">
+                                    <input type="date" class="form-control my-1" id="birth_date" name="birth_date" value= "<%= form ? form.birth_date: ''%>" required>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -32,23 +32,29 @@
                                     <label for="email" class="fw-bold">Email</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="email" class="form-control my-1" id="email" placeholder="example@axample.com" name="email">
+                                    <input type="email" class="form-control my-1" id="email" placeholder="example@axample.com" name="email" value= "<%= form ? form.email: ''%>" required>
+                                    <%if(emailError === 'true'){%>
+                                        <p class="alert-message text-danger">
+                                            <%=emailMessage%>
+                                        </p>
+                                    <%}%>
                                 </div>
                             </div>
                             <div class="row mb-1">
                                 <div class="col-12 col-md-6">
-                                    <label for="telepon" class="fw-bold">Telepon</label>
+                                    <label for="phone_number" class="fw-bold">Telepon</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="text" class="form-control my-1" id="telepon" placeholder="0873458902" name="telepon">
+                                    <input type="text" class="form-control my-1" id="phone_number" placeholder="0873458902" name="phone_number"   value= "<%= form ? form.phone_number: ''%>" required>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
-                                    <label for="alamat" class="fw-bold">Alamat</label>
+                                    <label for="address" class="fw-bold">Alamat</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <textarea type="text" class="form-control my-1" rows=3 id="alamat" placeholder="Alamat anda" name="alamat"></textarea>
+                                    <textarea type="text" class="form-control my-1" rows=3 id="address" placeholder="Alamat anda" name="address"  required><%=form ? form.address : ''%>
+                                    </textarea>
                                 </div>
                             </div>
 
@@ -57,33 +63,38 @@
                                     <label for="password" class="fw-bold">Password</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="password" class="form-control my-1" id="password" placeholder="Masukkan password" name="password">
+                                    <input type="password" minlength="6" maxlength="12" class="form-control my-1" id="password" placeholder="Masukkan password" name="password" required>
                                 </div>
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-12 col-md-6">
-                                    <label for="password" class="fw-bold">Konfirmasi Password</label>
+                                    <label for="confirmPassword" class="fw-bold">Konfirmasi Password</label>
                                 </div>
                                 <div class="col-12 col-md-10">
-                                    <input type="password" class="form-control my-1" id="password" placeholder="Masukkan password" name="password">
+                                    <input type="password"  class="form-control my-1" id="confirmPassword" placeholder="Masukkan password" name="confirmPassword" required>
+                                    <% if(errors === 'true'){ %> 
+                                        <p class=" text-danger alert-message">
+                                            <%= message %> 
+                                        </p>
+                                        <% } %> 
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center  regis-button mb-3">
                                 <button class="btn btn-success text-white p-2 fw-bold " type="submit">Register</button>
                             </div>
 
-                            <div class="d-flex justify-content-center align-items-center regis-button my-2 ">
+                            <!-- <div class="d-flex justify-content-center align-items-center regis-button my-2 ">
                                 <p class="text-secondary">atau</p>
-                            </div>
+                            </div> -->
 
-                            <div class="google d-flex justify-content-center align-items-center regis-button mb-2 ">
+                            <!-- <div class="google d-flex justify-content-center align-items-center regis-button mb-2 ">
                                 <button class="btn btn-secondary text-light p-2 fw-bold" type="submit"> <img src="../img/google.png" alt="google" class="mx-2">Daftar dengan Google</button>
-                            </div>
+                            </div> -->
 
                             <hr>
                             <div class="d-flex justify-content-center align-items-center">
-                                <a href="#">
+                                <a href="#" class=" text-decoration-none">
                                     <p class="text-secondary">Sudah punya akun? Login</p>
                                 </a>
 

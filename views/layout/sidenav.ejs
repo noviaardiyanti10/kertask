@@ -5,7 +5,7 @@
                 <p class="navbar-brand fw-bold px-4 py-4" href="#">KerTask</p>
             </li>
             <li class="nav-item py-4 w-100">
-                <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-th-large mx-2"></i>Home</a>
+                <a class="nav-link active" aria-current="page" href="/home"><i class="fas fa-th-large mx-2"></i>Home</a>
             </li>
             <li class="nav-item w-100">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +28,7 @@
                 <a class="nav-link" href="/profile"><i class="far fa-id-card mx-2"></i>My Profile</a>
             </li>
             <li class="nav-item py-5 w-100">
-                <a href="#" class="nav-link"><i class="fas fa-sign-out-alt mx-2"></i>Logout</a>
+                <a href="/logout" class="nav-link"><i class="fas fa-sign-out-alt mx-2"></i>Logout</a>
             </li>
         </ul>
     </div>
@@ -40,6 +40,6 @@
         </a>
     </div>
     <a class="btn" id="user-btn">
-        <p class="fw-bold px-5 text-secondary"><img src="../img/download.jpg" class="img-fluid rounded-circle photos mx-1" alt="photo"> Hai, Novia!</p>
+        <p class="fw-bold px-5 text-secondary"><img src="../img/download.jpg" class="img-fluid rounded-circle photos mx-1" alt="photo"> Hai, <%= locals.full_name %> </p>
     </a>
 </nav>
