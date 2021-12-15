@@ -91,9 +91,6 @@ const login= async(req, res) =>{
         email: email
     }
 
-    const name = await Biodata.findOne({where: {user_id:findEmail.id}})
-    console.log(name.full_name)
-
     if(!findEmail){
         res.render('users/login',{
             title: "Login", 
@@ -105,12 +102,15 @@ const login= async(req, res) =>{
         })
 
     }else{
+        const name = await Biodata.findOne({where: {user_id:findEmail.id}})
         const result = await validPassword(password, findEmail.password)
         if(result === true){
             if(findEmail.role_id === 1){
+                req.session.user_id = findEmail.id
                 req.session.email = findEmail.email
                 req.session.role_id = findEmail.role_id
                 req.session.full_name = name.full_name
+                // console.log(req.session.user_id)
                 res.redirect('/home')
             }else if(findEmail.role_id === 2){
                 req.session.email = findEmail.email

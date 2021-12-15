@@ -1,50 +1,75 @@
+const { localsName } = require('ejs');
+const {User, Biodata} = require('../models')
 const { Store } = require('express-session');
-const db = require('../models/index');
+const multer = require("multer");
+const path = require('path');
 
 
 const index = async (req, res) => {
-
+    // console.log(res.locals.user_id)
     // get data biodata from model
-    let profile = await db.Biodata.findOne({
+    let biodata_user = await Biodata.findOne({
+        include:[{model: User, attributes: ['email']}],
         where: {
-            user_id: 1
+            user_id: res.locals.user_id
         }
     });
-    
+
     res.render('users/profile-user', {
         title: "Profile",
-        profile
+        biodata_user
     })
 }
 
 const store = async (req, res) => {
-    const { full_name , birth_date, email, phone_number, address} = req.body;
+    const {full_name , birth_date, email, phone_number, address} = req.body;
 
-    // update or create biodata model
-    const biodata = await db.Biodata.findOne({
-        where: {
-            user_id: 1
+    const diskStorage = multer.diskStorage({
+        destination: function (req, file, callback) {
+            callback(null, path.join(__dirname, "public/user-photos"));
+        },
+    
+        filename: function (req, file, callback) {
+            callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
         }
     });
+    
 
-    if(biodata){
-        await biodata.update({
+    // update or create biodata model
+    let biodata_user = await Biodata.findOne({
+        include:[{model: User, attributes: ['email']}],
+        where: {
+            user_id: res.locals.user_id
+        }
+    });
+    multer({ storage: diskStorage }).single("photo");
+    const file = req.file.path;
+
+    if(!biodata_user){
+        console.log('not found')
+    }else{
+        await User.update({
+            email
+        }, {
+            where:{
+                id: res.locals.user_id
+            }
+        })
+        await Biodata.update({
+            avatar_url: req.file.path,
             full_name,
             birth_date,
             email,
             phone_number,
             address
+        }, {
+            where: {
+                user_id: res.locals.user_id
+            }
         })
-    }else{
-        await db.Biodata.create({
-            full_name,
-            birth_date,
-            email,
-            phone_number,
-            address,
-            user_id: 1
-        })
+
     }
+    
 
     return res.status(200).json({
         message: 'Profile updated successfully',
