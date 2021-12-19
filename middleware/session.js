@@ -42,7 +42,6 @@ const isLogin = (req, res, next) => {
             res.locals.role_id = req.session.role_id
             res.redirect('/')
         }
-       
     }
 }
 

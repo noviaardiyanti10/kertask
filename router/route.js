@@ -35,6 +35,6 @@ router.post('/register', isLogin, registrationUser);
 router.get('/profile/:id/update', checkLogin, profilePage);
 router.post('/profile/:id/update', checkLogin, profileStore);
 router.get('/report', checkLogin, reportPage);
-router.get('/update-task',  updateTaskPage);
-router.get('/create-task',  createTaskPage);
+router.get('/update-task', checkLogin, updateTaskPage);
+router.get('/create-task',  checkLogin, createTaskPage);
 module.exports = router;
