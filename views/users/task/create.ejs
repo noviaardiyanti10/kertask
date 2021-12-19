@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../partial/head.ejs') %>
+
+    <body class="update-task">
+        <%- include('../../layout/sidenav.ejs') %>
+
+
+            <div class="my-container main-profile ">
+                <div class="content-home finish-card">
+                    <div class="card mt-3 shadow">
+                        <div class="card-title d-flex justify-content-center align-items-center my-1">
+                            <h4 class="fw-bold rounded d-flex justify-content-center align-items-center py-1 text-done">My Task</h4>
+                        </div>
+                        <div class="card-body mx-3">
+                            <form id="task-form" action="" method="post" >
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="board_id" class="fw-bold">Nama Board</label>
+                                    </div>
+                                    <div class="col-12 col-md-10 d-flex justify-content-center">
+                                        <select class="form-control my-1" id="board_id" name="board_id">
+                                            <!-- loop boards -->
+                                            <option value="">Pilih Board</option>
+                                            <% for (var i = 0; i < boards.length; i++) { %>
+                                                <option value="<%= boards[i].id %>"><%= boards[i].board_name %></option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="title" class="fw-bold">Judul</label>
+                                    </div>
+                                    <div class="col-12 col-md-10 d-flex justify-content-center">
+                                        <input type="text" class="form-control my-1" id="title" name="title">
+                                    </div>
+                                </div>
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="description" class="fw-bold">Deskripsi</label>
+                                    </div>
+                                    <div class="col-12 col-md-10 d-flex justify-content-center">
+                                        <input type="text" class="form-control my-1" id="description" name="description">
+                                    </div>
+                                </div>
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="start_date" class="fw-bold">Mulai</label>
+                                    </div>
+                                    <div class="col-12 col-md-10 d-flex justify-content-center">
+                                        <input type="text" class="form-control my-1" id="start_date" name="start_date">
+                                    </div>
+                                </div>
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="due_date" class="fw-bold">Deadline</label>
+                                    </div>
+                                    <div class="col-12 col-md-10 d-flex justify-content-center">
+                                        <input type="text" class="form-control my-1" id="due_date" name="due_date">
+                                    </div>
+                                </div>
+                                <div class="row mb-2 ">
+                                    <div class="col-12 col-md-6 d-flex  align-items-center">
+                                        <label for="item" class="fw-bold">List Item</label>
+                                        <button type="button" class="btn btn-light ms-3 py-0" onclick="duplicateListItem()"><i class="fas fa-plus-circle py-0 mx-2"></i></button>
+                                    </div>
+                                    <div class="col-12 col-md-0 d-flex align-items-center">
+                                        <div class="form-outline list-item-parent">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mb-0">
+                                    
+                                        <button type="submit" id="task-form-submit" class="btn btn-info fw-bold text-white" type="submit">Create</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include("../../partial/script.ejs") %>
+
+    </body>
+
+</html>
+
+<template id="list-item-template">
+    <div class="list-item-child">
+        <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item[]">
+        <button type="button" class="btn btn-sm btn-danger" onclick="deleteList(this)">
+            <i class="fas fa-trash py-0 mx-2"></i>
+        </button>
+    </div>
+</template>
+
+<script>
+    function duplicateListItem()
+    {
+        const listItemTemplate = document.querySelector('#list-item-template');
+        const listItemParent = document.querySelector('.list-item-parent');
+        const listItem = listItemTemplate.content.cloneNode(true);
+        listItemParent.appendChild(listItem);
+    }
+
+    function deleteList(node)
+    {    
+        // remove this closest parent with list-item-child class
+        node.closest('.list-item-child').remove();
+    }
+
+    // ready function vanilla js
+    document.addEventListener('DOMContentLoaded', function() {
+
+        duplicateListItem();
+
+        const startDatePicker = MCDatepicker.create({
+            el: '#start_date'
+        });
+        
+        const dueDatePicker = MCDatepicker.create({
+            el: '#due_date'
+        });
+    });
+
+    document.getElementById('task-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let button = document.getElementById('task-form-submit');
+        button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;        
+
+        let form = document.getElementById('task-form');
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        // transform item[] into json
+        let item = document.querySelectorAll('.list-item-child input');
+        let itemJson = [];
+        for (var i = 0; i < item.length; i++) {
+            itemJson.push(item[i].value);
+        }
+        jsonData['item'] = itemJson;
+
+        // unset item[]
+        delete jsonData['item[]'];
+
+        axios.post('create', jsonData)
+        .then(function (response) {
+            console.log(response);
+
+            // empty form
+            document.getElementById('task-form').reset();
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
+            );
+            
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Create';
+            button.disabled = false;
+        });
+
+    });
+
+</script>
