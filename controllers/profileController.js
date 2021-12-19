@@ -3,6 +3,7 @@ const {User, Biodata} = require('../models')
 const { Store } = require('express-session');
 const multer = require("multer");
 const path = require('path');
+const { Op } = require('sequelize/dist');
 
 
 const index = async (req, res) => {
@@ -17,23 +18,13 @@ const index = async (req, res) => {
 
     res.render('users/profile-user', {
         title: "Profile",
-        biodata_user
+        biodata_user, 
+        message: req.flash('message')
     })
 }
 
 const store = async (req, res) => {
     const {full_name , birth_date, email, phone_number, address} = req.body;
-
-    const diskStorage = multer.diskStorage({
-        destination: function (req, file, callback) {
-            callback(null, path.join(__dirname, "public/user-photos"));
-        },
-    
-        filename: function (req, file, callback) {
-            callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
-        }
-    });
-    
 
     // update or create biodata model
     let biodata_user = await Biodata.findOne({
@@ -42,11 +33,20 @@ const store = async (req, res) => {
             user_id: res.locals.user_id
         }
     });
-    multer({ storage: diskStorage }).single("photo");
-    const file = req.file.path;
 
-    if(!biodata_user){
-        console.log('not found')
+    const cekEmail = await User.findAll({
+        where: {
+            email: email, 
+            [Op.not]: {id: res.locals.user_id}
+        }
+    })
+
+    console.log(cekEmail.length)
+    if(cekEmail.length > 0){
+        console.log('Email already exists ');
+        // req.flash('message', '*Email already exists');
+        // res.redirect(`/profile/${biodata_user.id}/update`)
+    
     }else{
         await User.update({
             email
@@ -56,7 +56,7 @@ const store = async (req, res) => {
             }
         })
         await Biodata.update({
-            avatar_url: req.file.path,
+            // avatar_url: upload,
             full_name,
             birth_date,
             email,
@@ -67,13 +67,13 @@ const store = async (req, res) => {
                 user_id: res.locals.user_id
             }
         })
+        res.redirect(`/profile/${biodata_user.id}/update`)
 
+        // return res.status(200).json({
+        //     message: 'Profile updated successfully',
+        // });
     }
-    
-
-    return res.status(200).json({
-        message: 'Profile updated successfully',
-    });
+        
 }
 
 module.exports = {

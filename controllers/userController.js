@@ -64,7 +64,7 @@ const registration = async(req, res) => {
                 user_id: user.id
             })
     
-            res.redirect('/home')
+            res.redirect('/login')
     }
 
 
