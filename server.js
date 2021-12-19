@@ -4,17 +4,15 @@ const app = express();
 const router = require('./router/route');
 const flash = require('connect-flash');
 const session = require("express-session");
+const cookieSession = require('cookie-session')
 const logger = require("./middleware/logger");
 
 const { PORT = 8000 } = process.env;
 
-app.use(session({
+app.use(cookieSession({
+    name: 'session',
     secret: 'secret word in use',
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-        expires: 43200000
-    }
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 app.use(flash());
 app.use(function(req, res, next) {
