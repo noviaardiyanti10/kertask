@@ -8,6 +8,7 @@ const {
     loginPage,
     registerPage,
     updateTaskPage,
+    createTaskPage,
     reportPage
 } = require('../controllers/pageController');
 
@@ -31,8 +32,9 @@ router.get('/logout', checkLogin, logoutUser);
 router.get('/register', isLogin, registerPage);
 router.post('/register', isLogin, registrationUser);
 
-router.get('/profile', checkLogin, profilePage);
-router.post('/profile', checkLogin, profileStore);
+router.get('/profile/:id/update', checkLogin, profilePage);
+router.post('/profile/:id/update', checkLogin, profileStore);
 router.get('/report', checkLogin, reportPage);
-router.get('/update-task', checkLogin, updateTaskPage);
+router.get('/update-task',  updateTaskPage);
+router.get('/create-task',  createTaskPage);
 module.exports = router;

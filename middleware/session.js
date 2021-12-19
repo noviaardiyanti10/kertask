@@ -25,8 +25,6 @@ const landingLogin = (req, res, next) => {
     }
 }
 
-
-
 const isLogin = (req, res, next) => {
     if (req.session.email === undefined) {
         res.locals.loggedIn = false;
