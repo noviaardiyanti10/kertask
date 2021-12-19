@@ -47,6 +47,11 @@ const updateTaskPage = (req, res) => {
         title: "Update"
     })
 }
+const createTaskPage = (req, res) => {
+    res.render('users/create-task', {
+        title: "Create"
+    })
+}
 
 
 module.exports = {
@@ -56,6 +61,7 @@ module.exports = {
     loginPage,
     registerPage,
     updateTaskPage,
+    createTaskPage,
     reportPage
 
 }
