@@ -17,7 +17,7 @@ const {registrationUser, loginUser, logoutUser}= require('../controllers/userCon
 const { boardStore, boardPage } = require('../controllers/boardController');
 const { profilePage, profileStore } = require('../controllers/profileController');
 const { editTaskPage, createTaskPage, storeTask } = require('../controllers/taskController');
-const { boardTaskPage } = require('../controllers/boardTaskController');
+const { boardTaskPage, boardTaskDelete } = require('../controllers/boardTaskController');
 const {checkLogin, isLogin, landingLogin} = require('../middleware/session');
 
 router.get('/home',checkLogin, homePage);
@@ -26,6 +26,7 @@ router.get('/board', checkLogin, boardPage);
 router.post('/board', checkLogin, boardStore);
 
 router.get('/board/:id/task', checkLogin, boardTaskPage);
+router.delete('/board/:id/task', checkLogin, boardTaskDelete);
 
 router.get('/login', isLogin, loginPage);
 router.post('/login', isLogin, loginUser);

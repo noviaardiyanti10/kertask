@@ -25,6 +25,25 @@ const index = async (req, res) => {
     })
 }
 
+const destroy = async (req, res) => {
+
+    // destroy task and list of task from board id
+    await db.Task.destroy({
+        where: {
+            id: req.params.id
+        },
+        include: [{
+            model: db.List,
+            as: 'Lists'
+        }]
+    });
+
+    return res.status(200).json({
+        message: 'success'
+    });
+}
+
 module.exports = {
-    boardTaskPage: index
+    boardTaskPage: index,
+    boardTaskDelete: destroy
 }
