@@ -1,0 +1,39 @@
+<div class="card todo-card shadow">
+    <div class="row">
+        <div class="col-9 px-4">
+            <div class="card-title fs-5 fw-bold text-center pt-2"><%- task.title %> </div>
+            <p class=" text-date mb-0 text-secondary"><i class="fas fa-calendar mx-2 "></i><%- task.start_date.toISOString().substring(0, 10).split('-').reverse().join('-') %> </p>
+        </div>
+        <div class="col-2 px-4 pt-3 d-flex justify-content-end">
+            <a class="nav-link text-decoration-none text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item mb-1" href="#"><i class="fas fa-pencil-alt mx-2"></i>Update</a></li>
+                <li><a class="dropdown-item mb-1" href="#"><i class="fas fa-trash mx-2"></i>Delete</a></li>
+            </ul>
+            <!-- <a href="#" class="text-decoration-none text-dark"><i class="fas fa-pencil-alt"></i></a> -->
+        </div>
+    </div>
+    <div class="card-body board-card">
+        <div class="card mb-2 shadow pt-2 mx-1">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <ul class="list-group">
+                        
+                        <% for (list of task.Lists) { %>
+                            <%- include('../components/taks-list.ejs', {
+                                list,
+                            }); %>
+                        <% } %>
+                        
+                    </ul>
+                </div>
+
+                <div class="col-12 d-flex justify-content-center align-items-center">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
