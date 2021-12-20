@@ -3,48 +3,46 @@
 
 <%- include("../partial/head.ejs") %>
 
-    <body class="home">
+    <body>
         <%- include("../layout/sidenav.ejs") %>
 
-            <div class="my-container main mb-5">
-                <div class="px-3 content-home">
-                    <div class="card header d-flex align-items-center p-4 mb-3">
-                        <h5 class="">Welcome Back!</h5>
-                        <h4 class="fw-bold">Let's fighting to finish your task</h4>
-                        <div class="mx-auto">
-                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit">Create Board</button>
-                        </div>
+        <div class="my-container main">
+            <div class="content-home p-0">
+                <div class="card header d-flex align-items-center p-4 mt-2 mb-3">
+                    <h5 class="">Welcome Back!</h5>
+                    <h4 class="fw-bold">Let's fighting to finish your task</h4>
+                    <div class="mx-auto">
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit">Create Board</button>
                     </div>
+                </div>
 
                     <h5 class="card-title fw-bold px-2 my-4">Daily report</h5>
-                    <div class="card mb-4 mx-5 card-daily">
+                    <div class="card mb-4 card-daily mx-auto ">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-6 col-md-3 text-center border-end">
-                                    <h4 class="fw-bold">2</h4>
+                            <div class="row  d-flex justify-content-center">
+                                <div class="col-6 text-center border-end">
+                                    <h4 class="fw-bold"><%= totalTask %></h4>
                                     <p class="text-secondary">Total Task</p>
                                 </div>
-                                <div class=" col-6 col-md-3 text-center border-end">
-                                    <h4 class="fw-bold">2</h4>
-                                    <p class="text-secondary">To do</p>
+                                <div class=" col-6  text-center border-end">
+                                    <h4 class="fw-bold"><%= totalBoard %></h4>
+                                    <p class="text-secondary">Total Board</p>
                                 </div>
 
-                                <div class="col-6 col-md-3 text-center border-end">
-                                    <h4 class="fw-bold">1</h4>
-                                    <p class="text-secondary">In progress</p>
-                                </div>
-
-                                <div class="col-6 col-md-3 text-center  last-col">
-                                    <h4 class="fw-bold">0</h4>
-                                    <p class="text-secondary">Completed</p>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 col-md-6">
+                        <div class="col-6">
                             <h5 class="card-title fw-bold px-2 my-4">Recent Task</h5>
-                            <div class="d-flex justify-content-center card-link">
+                            <div class="row">
+                                <% for (newTask of newTasks) { %>
+                                    <%- include('../components/task-card.ejs', {
+                                        newTask
+                                    }); %>
+                                <% } %>
+                            </div>
+                            <!-- <div class="d-flex justify-content-center card-link">
                                 <div class="card" id="card-1">
                                     <div class="card-body">
                                         <a href="#" class="text-dark text-decoration-none">
@@ -92,13 +90,20 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column">
-                                <h5 class="fw-bold text-dark my-3">Reminders (3)</h5>
-                                <div class="card mb-2" id="card-all">
+                                <h5 class="fw-bold text-dark my-3">Reminders</h5>
+                                <div class="row">
+                                    <% for (remind of remindTasks) { %>
+                                        <%- include('../components/reminder.ejs', {
+                                            remind
+                                        }); %>
+                                    <% } %>
+                                </div>
+                                <!-- <div class="card mb-2" id="card-all">
                                     <div class="card-body card-reminder px-4">
                                         <a href="#" class="text-dark text-decoration-none">
                                             <div class="row">
@@ -119,29 +124,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-                                <div class="card mb-2" id="card-all">
-                                    <div class="card-body card-reminder px-4">
-                                        <a href="#" class="text-dark text-decoration-none">
-                                            <div class="row">
-                                                <div class="col-7">
-                                                    <p class=" text-secondary mb-0 text-board">Board: To-do</p>
-                                                    <p class="fw-bold">Task Name</p>
-                                                    <p class="text-secondary mb-0 text-board"><i class="far fa-clock"></i> 6 jam</p>
-                                                </div>
-
-                                                <div class="col-4 d-flex justify-content-end align-items-start">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                        <label class="form-check-label text-desc" for="flexCheckDefault">
-                                                  Completed
-                                                </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>
@@ -171,60 +154,16 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
-
             <%- include("../layout/footer.ejs") %>
 
+        </div>
 
 
-
-                <%- include("../partial/script.ejs") %>
+    <%- include("../partial/script.ejs") %>
 
     </body>
 
 </html>
 
-<script>
-
-    // board-form on submit in javascript vanilla
-    document.getElementById('board-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let button = document.getElementById('board-form-submit');
-        button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
-        button.disabled = true;        
-
-        let form = document.getElementById('board-form');
-        // transform form into json
-        let formData = new FormData(form);
-        let jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });        
-
-        axios.post('board', jsonData)
-        .then(function (response) {
-            console.log(response);
-
-            // close modal vanilla js
-            document.getElementById('staticBackdropCloseButton').click();
-
-            // empty form
-            document.getElementById('board-form').reset();
-
-            Swal.fire(
-                'Success!',
-                response.data.message,
-                'success'
-            );
-            
-        }).catch(function (error) {
-            console.log(error);
-        }).then(function () {
-            button.innerHTML = 'Create';
-            button.disabled = false;
-        });
-
-    });
-
-</script>

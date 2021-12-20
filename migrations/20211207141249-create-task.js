@@ -10,6 +10,19 @@ module.exports = {
                 onDelete: 'cascade',
                 onUpdate: 'cascade'
             },
+            user_id: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: {
+                        tableName: "Users",
+
+                    },
+                    key: "id",
+                },
+                allowNull: true,
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            },
             board_id: {
                 type: Sequelize.INTEGER,
                 references: {

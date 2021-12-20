@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
             User.hasMany(models.userBoard, {
                 foreignKey: 'user_id'
             })
+            User.hasMany(models.Task, {
+                foreignKey: 'user_id'
+            })
         }
     };
     User.init({

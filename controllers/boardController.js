@@ -1,9 +1,9 @@
-const db = require('../models/index');
+const {Users, userBoard, Task, Sequelize} = require('../models');
 
 const store = async (req, res) => {
     const { board_name } = req.body;
     // insert board using userBoard sequelize model with promise
-    const board = await db.userBoard.create({
+    const board = await userBoard.create({
         board_name,
         user_id: req.session.user_id
     });
@@ -16,17 +16,28 @@ const store = async (req, res) => {
 const index = async (req, res) => {
 
     // get all boards using userBoard sequelize model with promise
-    const boards = await db.userBoard.findAll({
-        where: {
-            user_id: req.session.user_id
-        }
+    const boards = await userBoard.findAll({
+        attributes: {
+            include: [[Sequelize.fn("COUNT", Sequelize.col("Tasks.id")), "TasksCount"]]
+        },
+        where:{
+            user_id: req.session.user_id 
+        },
+        include: [{
+            model: Task, attributes: []
+        }], 
+        raw: true,
+        group: ["userBoard.id"]
     });
+    // console.log(boardsDone)
 
     res.render('users/board-page', {
         title: "Board",
         boards
     })
 }
+
+
 
 
 module.exports = {

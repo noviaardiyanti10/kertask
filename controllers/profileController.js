@@ -67,7 +67,7 @@ const store = async (req, res) => {
                 user_id: res.locals.user_id
             }
         })
-        res.redirect(`/profile/${biodata_user.id}/update`)
+        res.redirect(`/profile`)
 
         // return res.status(200).json({
         //     message: 'Profile updated successfully',

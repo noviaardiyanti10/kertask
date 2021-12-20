@@ -132,7 +132,7 @@ const login= async(req, res) =>{
 }
 
 const logout = async(req, res, next) =>{
-    req.session.destroy();
+    req.session = null;
     res.redirect('/');
 }
 

@@ -34,8 +34,8 @@ router.get('/logout', checkLogin, logoutUser);
 router.get('/register', isLogin, registerPage);
 router.post('/register', isLogin, registrationUser);
 
-router.get('/profile/:id/update', checkLogin, profilePage);
-router.post('/profile/:id/update', checkLogin, profileStore);
+router.get('/profile', checkLogin, profilePage);
+router.post('/profile', checkLogin, profileStore);
 router.get('/report', checkLogin, reportPage);
 
 router.get('/task/edit', checkLogin, editTaskPage);

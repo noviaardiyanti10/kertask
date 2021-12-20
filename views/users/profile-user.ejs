@@ -5,11 +5,12 @@
 
     <body class="profile-page">
         <%- include("../layout/sidenav.ejs") %>
-            <div class="my-container main-profile profile">
-                <div class="content-home mx-auto">
+
+            <div class=" my-container main-profile profile">
+                <div class="content-home d-flex justify-content-center">
                     <div class="card mt-2 shadow">
                         <div class="card-body mx-2">
-                            <form method="post" action="/profile/<%=biodata_user.id%>/update" >
+                            <form method="post" action="/profile" id="profile-form" >
                                 <div class="row d-flex align-items-center justify-content-center my-3">
                                     <h5 class="text-center fw-bold py-1">Profil <%= biodata_user.full_name %></h5>
                                 </div>
@@ -73,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center mb-0 py-4">
-                                    <button name="submit" class="btn btn-success fw-bold w-50" type="submit">Update</button>
+                                    <button name="submit"  id="profile-form-submit" class="btn btn-success fw-bold w-50" type="submit">Update</button>
                                 </div>
                             </form>
 
@@ -89,41 +90,3 @@
 
 </html>
 
-<script>
-
-    // profile-form on submit in javascript vanilla
-    document.getElementById('profile-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let button = document.getElementById('profile-form-submit');
-        button.innerHTML = 'Updating <i class="fas fa-spinner fa-spin"></i>';
-        button.disabled = true;        
-
-        let form = document.getElementById('profile-form');
-        // transform form into json
-        let formData = new FormData(form);
-        let jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });        
-
-        axios.post('profile', jsonData)
-        .then(function (response) {
-            console.log(response);
-
-            Swal.fire(
-                'Success!',
-                response.data.message,
-                'success'
-            );
-
-        }).catch(function (error) {
-            console.log(error);
-        }).then(function () {
-            button.innerHTML = 'Create';
-            button.disabled = false;
-        });
-
-    });
-
-</script>

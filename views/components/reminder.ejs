@@ -1,0 +1,23 @@
+<div class="col-9">
+    <div class="card mb-2" id="card-all">
+        <div class="card-body card-reminder px-4">
+            <a href="#" class="text-dark text-decoration-none">
+                <div class="row">
+                    <div class="col-12">
+                        <p class=" text-secondary mb-0 text-board"><%- remind.userBoard.board_name %></p>
+                        <p class="fw-bold mb-0"><%- remind.title %></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="text-secondary mb-0 text-board"><i class="far fa-clock"></i> <%- remind.duration %> jam</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-dark mb-0 text-board"><i class="far fa-calendar"></i> <%- remind.due_date.toISOString().substring(0, 10) %> jam</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

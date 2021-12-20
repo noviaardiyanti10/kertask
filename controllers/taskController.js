@@ -1,3 +1,4 @@
+const { NOW } = require('sequelize/dist');
 const db = require('../models/index');
 
 const edit = (req, res) => {
@@ -28,7 +29,7 @@ const store = async (req, res) => {
             const { board_id, title, description, due_date, start_date, item } = req.body;
 
             new_due_date = new Date(due_date);
-            new_start_date = new Date(start_date);
+            new_start_date = new Date(NOW);
             const duration = Math.abs(new_due_date - new_start_date) / (1000 * 60 * 60 * 24);
 
             // insert task using task sequelize model with promise
@@ -40,8 +41,8 @@ const store = async (req, res) => {
                 start_date: new_start_date,
                 due_date: new_due_date,
                 user_id: req.session.user_id,
-                percentage: 0,
-                duration: duration
+                percentage: 0
+                // duration: duration
             });
 
             // insert list using list array sequelize model with promise    

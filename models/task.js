@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
             Task.belongsTo(models.userBoard, {
                 foreignKey: 'board_id'
             })
+            Task.belongsTo(models.User, {
+                foreignKey: 'user_id'
+            })
 
             Task.hasMany(models.List, {
                 foreignKey: 'task_id'
@@ -21,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     };
     Task.init({
         title: DataTypes.STRING,
+        user_id: DataTypes.INTEGER,
         board_id: DataTypes.INTEGER,
         description: DataTypes.STRING,
         start_date: DataTypes.DATE,
