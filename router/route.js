@@ -20,6 +20,7 @@ const { boardStore, boardPage, boardDel, boardUpdate } = require('../controllers
 const { profilePage, profileStore } = require('../controllers/profileController');
 const { editTaskPage, createTaskPage, storeTask, updateTask } = require('../controllers/taskController');
 const { boardTaskPage, boardTaskDelete } = require('../controllers/boardTaskController');
+const { updateList } = require('../controllers/listController');
 const {checkLogin, isLogin, landingLogin} = require('../middleware/session');
 
 router.get('/home',checkLogin, homePage);
@@ -46,6 +47,8 @@ router.get('/task/:id/edit', checkLogin, editTaskPage);
 router.post('/task/:id/update', checkLogin, updateTask);
 router.get('/task/create',  checkLogin, createTaskPage);
 router.post('/create',  checkLogin, storeTask);
+
+router.post('/list/:id/update', checkLogin, updateList);
 
 
 router.get('/dashboard', checkLogin, dashboard)
