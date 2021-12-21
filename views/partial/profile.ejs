@@ -1,0 +1,38 @@
+<script>
+
+    // profile-form on submit in javascript vanilla
+    document.getElementById('profile-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let button = document.getElementById('profile-form-submit');
+        button.innerHTML = 'Updating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;        
+
+        let form = document.getElementById('profile-form');
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });        
+
+        axios.post('profile', jsonData)
+        .then(function (response) {
+            console.log(response);
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
+            );
+
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Create';
+            button.disabled = false;
+        });
+
+    });
+
+</script>

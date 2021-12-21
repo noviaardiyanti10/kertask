@@ -20,14 +20,15 @@ const update = async (req, res) => {
     
     const is_complete = task.Lists.filter(list => list.is_complete === true).length
     const total = task.Lists.length
-    const percentage = (is_complete / total) * 100
+    const percentage = Math.round((is_complete / total) * 100)
 
     // convert percentage to integer
-    const percentage = Math.round(percentage)
+  
 
     await task.update({
         percentage
-    })
+    }).catch(err => console.log(err))
+    console.log(percentage)
 
     return res.status(200).json({
         message: 'List updated successfully'

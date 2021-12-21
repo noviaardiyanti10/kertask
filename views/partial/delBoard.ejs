@@ -1,0 +1,55 @@
+<script>
+    function delBoard(id) {
+        // Swal confirmation
+        Swal.fire({
+            title: 'Warning!',
+            text: "Are you sure you want to delete this board?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#aaa',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    axios.delete('/board/' + id)
+                        .then(function(response) {
+                            resolve(response);
+                        })
+                        .catch(function(error) {
+                            throw error;
+                        });
+                });
+            }
+        }).then(function(data) {
+            data = data.value;
+
+            if (data.status) {
+                Swal.fire(
+                    'Success!',
+                    data.message,
+                    'success'
+                ).then(function() {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: data.message,
+                    icon: "warning",
+                    button: "OK",
+                });
+            }
+        }).catch(function(err) {
+            Swal.fire({
+                title: "Error",
+                text: err.message,
+                icon: "warning",
+                button: "OK",
+            });
+        });
+    }
+</script>

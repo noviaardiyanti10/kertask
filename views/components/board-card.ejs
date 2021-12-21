@@ -6,9 +6,9 @@
                 <i class="fas fa-info-circle"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li onclick="update('<%- board.id%>')"><a class="dropdown-item  mb-1 text-desc" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-pencil-alt mx-2"></i>Update</a></li>
-                <li onclick="delBoard('<%- board.id %>')"><a class="dropdown-item mb-1 text-desc" href="#"><i class="fas fa-trash mx-2"></i>Delete</a></li>
-                <li><a class="dropdown-item mb-1 text-desc" href="/board/<%- board.id %>/task"><i class="fas fa-location-arrow mx-2"></i><%- board.board_name  %> </a></li>
+                <li onclick="update('<%- board.id%>')"><a class="dropdown-item  mb-1" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%- board.id %>"  ><i class="fas fa-pencil-alt mx-2"></i>Update</a></li>
+                <li onclick="delBoard('<%- board.id %>')"><a class="dropdown-item mb-1" href="#"><i class="fas fa-trash mx-2"></i>Delete</a></li>
+                <li><a class="dropdown-item mb-1" href="/board/<%- board.id %>/task"><i class="fas fa-location-arrow mx-2"></i><%- board.board_name  %> </a></li>
             </ul>
         </div>
 
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop<%- board.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,12 +35,15 @@
             <form id="board-update" action="" method="post" >
                 <div class="modal-body">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" name="board_name" placeholder="youremail@example.com" value="<%- board.board_name %> " required>
+                        <input type="text" class="form-control" id="floatingInput" name="board_name"  value="<%- board.board_name %> " required>
                         <label class="form-label" for=" floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="hidden" class="form-control" id="board_id" name="board_id"  value="<%- board.id %> " required>
+                      
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                     <button id="board-update-submit" type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
