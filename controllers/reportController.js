@@ -1,8 +1,8 @@
-const {User, Task, userBoard} = require('../models')
+const {User, Task, userBoard, List} = require('../models')
 
 const report = async(req, res) => {
     const reports = await Task.findAll({
-        include: userBoard,
+        include: [userBoard, List],
         where:{
             user_id: req.session.user_id 
         }
@@ -14,7 +14,6 @@ const report = async(req, res) => {
         const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
         reportDate.duration = duration
     }
-    console.log(reports)
 
     res.render('users/report-page', {
         title: "Report", 
