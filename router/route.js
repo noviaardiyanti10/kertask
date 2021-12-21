@@ -1,21 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-    landingPage,
-    homePage,
-    currentBoardPage,
-    loginPage,
-    registerPage,
-} = require('../controllers/pageController');
+const {landingPage, homePage, loginPage, registerPage,} = require('../controllers/pageController');
 const  {report, reportUsers} = require('../controllers/reportController');
 const  {dashboard, getUser} = require('../controllers/adminController');
-
-
-
 const {registrationUser, loginUser, logoutUser}= require('../controllers/userController');
-
-
 const { boardStore, boardPage, boardDel, boardUpdate } = require('../controllers/boardController');
 const { profilePage, profileStore } = require('../controllers/profileController');
 const { editTaskPage, createTaskPage, storeTask, updateTask } = require('../controllers/taskController');

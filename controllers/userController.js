@@ -1,7 +1,7 @@
 const {User, Biodata, Role} = require('../models')
 const bycriptjs = require('bcryptjs');
 const bcryptjs = require('bcryptjs');
-const { password, user } = require('pg/lib/defaults');
+
 
 const registration = async(req, res) => {
     const {full_name, birth_date, phone_number, email, address, password, confirmPassword} = req.body

@@ -77,11 +77,6 @@ const homePage = async (req, res) => {
     })
 }
 
-const currentBoardPage = async  (req, res) => {
-    res.render('users/current-board', {
-        title: "Board"
-    })
-}
 const loginPage = async  (req, res) => {
     res.render('users/login', {
         title: "Login",
@@ -104,18 +99,11 @@ const registerPage = async  (req, res) => {
     })
 }
 
-// const reportPage = async  (req, res) => {
-//     res.render('users/report-page', {
-//         title: "Report"
-//     })
-// }
 
 
 module.exports = {
     landingPage,
     homePage,
-    currentBoardPage,
     loginPage,
     registerPage,
-    // reportPage
 }
