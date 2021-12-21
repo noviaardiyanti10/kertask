@@ -44,7 +44,7 @@ const store = async (req, res) => {
             // insert list using list array sequelize model with promise    
             for (let i = 0; i < item.length; i++) {    
                 await List.create({
-                    // task_id: task.id,
+                    task_id: createTask.id,
                     item: item[i],
                     is_complete: false
                 });
