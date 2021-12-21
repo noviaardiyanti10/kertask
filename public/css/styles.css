@@ -245,11 +245,11 @@ body {
 }
 
 .text-content {
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .text-desc {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
 }
 
 .text-board {
@@ -269,7 +269,7 @@ body {
 }
 
 .percent {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .header button {
