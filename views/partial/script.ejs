@@ -78,6 +78,195 @@
                 'Success!',
                 response.data.message,
                 'success'
+            ).then(function() {
+                    location.reload();
+                });;
+            
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Create';
+            button.disabled = false;
+        });
+
+    });
+
+</script>
+
+<script>
+    function delBoard(id) {
+        // Swal confirmation
+        Swal.fire({
+            title: 'Warning!',
+            text: "Are you sure you want to delete this board?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#aaa',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    axios.delete('/board/' + id)
+                        .then(function(response) {
+                            resolve(response);
+                        })
+                        .catch(function(error) {
+                            throw error;
+                        });
+                });
+            }
+        }).then(function(data) {
+            data = data.value;
+
+            if (data.status) {
+                Swal.fire(
+                    'Success!',
+                    data.message,
+                    'success'
+                ).then(function() {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: data.message,
+                    icon: "warning",
+                    button: "OK",
+                });
+            }
+        }).catch(function(err) {
+            Swal.fire({
+                title: "Error",
+                text: err.message,
+                icon: "warning",
+                button: "OK",
+            });
+        });
+    }
+</script>
+
+<script>
+
+    function update(id){
+
+        // board-form on submit in javascript vanilla
+        document.getElementById('board-update').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let button = document.getElementById('board-update-submit');
+            button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;        
+
+            let form = document.getElementById('board-update');
+            // transform form into json
+            let formData = new FormData(form);
+            let jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });        
+
+            axios.post('/board/' + id, jsonData)
+            .then(function (response) {
+                console.log(response);
+
+                // close modal vanilla js
+                document.getElementById('staticBackdropCloseButton').click();
+
+                // empty form
+                document.getElementById('board-update').reset();
+
+                Swal.fire(
+                    'Success!',
+                    response.data.message,
+                    'success'
+                ).then(function() {
+                    location.reload();
+                });
+                
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {
+                button.innerHTML = 'Create';
+                button.disabled = false;
+            });
+
+        });
+    }
+
+</script>
+
+
+<script>
+    function duplicateListItem()
+    {
+        const listItemTemplate = document.querySelector('#list-item-template');
+        const listItemParent = document.querySelector('.list-item-parent');
+        const listItem = listItemTemplate.content.cloneNode(true);
+        listItemParent.appendChild(listItem);
+    }
+
+    function deleteList(node)
+    {    
+        // remove this closest parent with list-item-child class
+        node.closest('.list-item-child').remove();
+    }
+
+    // ready function vanilla js
+    document.addEventListener('DOMContentLoaded', function() {
+
+        duplicateListItem();
+
+        const startDatePicker = MCDatepicker.create({
+            el: '#start_date'
+        });
+        
+        const dueDatePicker = MCDatepicker.create({
+            el: '#due_date'
+        });
+    });
+
+    document.getElementById('task-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let button = document.getElementById('task-form-submit');
+        button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;        
+
+        let form = document.getElementById('task-form');
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });        
+
+         // transform item[] into json
+         let item = document.querySelectorAll('.list-item-child input');
+        let itemJson = [];
+        for (var i = 0; i < item.length; i++) {
+            itemJson.push(item[i].value);
+        }
+        jsonData['item'] = itemJson;
+
+        // unset item[]
+        delete jsonData['item[]'];
+
+        axios.post('/create', jsonData)
+        .then(function (response) {
+            console.log(response);
+    
+
+            // empty form
+            document.getElementById('task-form').reset();
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
             );
             
         }).catch(function (error) {

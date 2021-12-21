@@ -34,7 +34,7 @@
                                         <label for="title" class="fw-bold">Judul</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="title" name="title">
+                                        <input type="text" class="form-control my-1" id="title" name="title" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -42,7 +42,7 @@
                                         <label for="description" class="fw-bold">Deskripsi</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="description" name="description">
+                                        <textarea id="description" name="description" class="form-control" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -50,7 +50,7 @@
                                         <label for="start_date" class="fw-bold">Mulai</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="start_date" name="start_date">
+                                        <input type="text" class="form-control my-1" id="start_date" name="start_date" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -58,7 +58,7 @@
                                         <label for="due_date" class="fw-bold">Deadline</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="due_date" name="due_date">
+                                        <input type="text" class="form-control my-1" id="due_date" name="due_date" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -73,9 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center mb-0">
-                                    
                                         <button type="submit" id="task-form-submit" class="btn btn-info fw-bold text-white" type="submit">Create</button>
-
                                 </div>
                             </form>
 
@@ -99,81 +97,3 @@
     </div>
 </template>
 
-<script>
-    function duplicateListItem()
-    {
-        const listItemTemplate = document.querySelector('#list-item-template');
-        const listItemParent = document.querySelector('.list-item-parent');
-        const listItem = listItemTemplate.content.cloneNode(true);
-        listItemParent.appendChild(listItem);
-    }
-
-    function deleteList(node)
-    {    
-        // remove this closest parent with list-item-child class
-        node.closest('.list-item-child').remove();
-    }
-
-    // ready function vanilla js
-    document.addEventListener('DOMContentLoaded', function() {
-
-        duplicateListItem();
-
-        const startDatePicker = MCDatepicker.create({
-            el: '#start_date'
-        });
-        
-        const dueDatePicker = MCDatepicker.create({
-            el: '#due_date'
-        });
-    });
-
-    document.getElementById('task-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let button = document.getElementById('task-form-submit');
-        button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
-        button.disabled = true;        
-
-        let form = document.getElementById('task-form');
-        // transform form into json
-        let formData = new FormData(form);
-        let jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });
-
-        // transform item[] into json
-        let item = document.querySelectorAll('.list-item-child input');
-        let itemJson = [];
-        for (var i = 0; i < item.length; i++) {
-            itemJson.push(item[i].value);
-        }
-        jsonData['item'] = itemJson;
-
-        // unset item[]
-        delete jsonData['item[]'];
-
-        axios.post('create', jsonData)
-        .then(function (response) {
-            console.log(response);
-
-            // empty form
-            document.getElementById('task-form').reset();
-
-            Swal.fire(
-                'Success!',
-                response.data.message,
-                'success'
-            );
-            
-        }).catch(function (error) {
-            console.log(error);
-        }).then(function () {
-            button.innerHTML = 'Create';
-            button.disabled = false;
-        });
-
-    });
-
-</script>

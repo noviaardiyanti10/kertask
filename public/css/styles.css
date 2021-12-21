@@ -160,6 +160,10 @@ body {
 .board-content {
     overflow-y: hidden;
 }
+.board-page {
+    overflow-y: hidden;
+    background-color: #e2f8efbb;
+}
 
 
 /* .board-title {
@@ -241,7 +245,7 @@ body {
 }
 
 .text-content {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .text-desc {
@@ -282,7 +286,7 @@ body {
 }
 
 .fa-angle-right {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     color: #4c178a;
 }
 
@@ -343,10 +347,13 @@ body {
     padding-top: 1rem;
 }
 
-.board-menu h4 {
-    width: 7rem;
+.board-bg{
+    background-color: #e2f8ef98;
+
+}
+
+.board-menu h5 {
     height: max-content;
-    font-size: 1.3rem;
     background-color: #c0e5ddaf;
 }
 
@@ -491,4 +498,33 @@ body {
 
 .card-daily{
     width: 50%;
+}
+
+.admin-page, .admin-page .main-admin{
+    background-color: #deecde;
+    overflow: hidden;
+}
+
+.main-admin .card{
+    width: 15rem;
+}
+
+.tableFixHead {
+    overflow: scroll;
+    height: 30rem;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: -1px;
+    padding: 1.2rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.users-page{
+    overflow: hidden;
 }

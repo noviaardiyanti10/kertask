@@ -34,14 +34,18 @@ const homePage = async (req, res) => {
         limit: 2, 
         raw: true
     })
-    for (taskCurrent of newTasks){
-        let today = new Date()
-        // let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        const new_due_date = new Date(taskCurrent.due_date);
-        const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
-        taskCurrent.duration = duration
+
+
+    if(newTasks.length > 0){
+        for (taskCurrent of newTasks){
+            let today = new Date()
+            // let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            const new_due_date = new Date(taskCurrent.due_date);
+            const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
+            taskCurrent.duration = duration
+        }
+        console.log (taskCurrent.duration);
     }
-    console.log (taskCurrent.duration);
 
 
     const remindTasks = await Task.findAll({
@@ -55,12 +59,15 @@ const homePage = async (req, res) => {
         limit: 2
     })
 
-    for (lastDate of remindTasks){
-        let today = new Date()
-        const new_due_date = new Date(lastDate.due_date);
-        const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
-        lastDate.duration = duration
+    if(remindTasks.length > 0){
+        for (lastDate of remindTasks){
+            let today = new Date()
+            const new_due_date = new Date(lastDate.due_date);
+            const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
+            lastDate.duration = duration
+        }
     }
+    
     res.render('users/home', {
         title: "Home", 
         totalBoard, 
@@ -97,11 +104,11 @@ const registerPage = async  (req, res) => {
     })
 }
 
-const reportPage = async  (req, res) => {
-    res.render('users/report-page', {
-        title: "Report"
-    })
-}
+// const reportPage = async  (req, res) => {
+//     res.render('users/report-page', {
+//         title: "Report"
+//     })
+// }
 
 
 module.exports = {
@@ -110,5 +117,5 @@ module.exports = {
     currentBoardPage,
     loginPage,
     registerPage,
-    reportPage
+    // reportPage
 }

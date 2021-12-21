@@ -13,6 +13,21 @@ const store = async (req, res) => {
     });
 }
 
+const update = async(req, res) => {
+    const { board_name } = req.body;
+
+    const updateBoard = await userBoard.update({
+        board_name
+    }, {
+        where:{
+            id: req.params.id
+        }
+    })
+
+    return res.status(200).json({
+        message: 'Board update successfully',
+    });
+}
 const index = async (req, res) => {
 
     // get all boards using userBoard sequelize model with promise
@@ -29,6 +44,8 @@ const index = async (req, res) => {
         raw: true,
         group: ["userBoard.id"]
     });
+
+
     // console.log(boardsDone)
 
     res.render('users/board-page', {
@@ -38,9 +55,25 @@ const index = async (req, res) => {
 }
 
 
+const delBoard = async (req, res) => {
+
+    // destroy task and list of task from board id
+    await userBoard.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+
+    return res.status(200).json({
+        message: 'success'
+    });
+}
+
 
 
 module.exports = {
     boardStore : store,
     boardPage : index,
+    boardDel: delBoard,
+    boardUpdate: update
 }

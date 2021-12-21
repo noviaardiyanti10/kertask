@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partial/head.ejs") %>
+
+    <body class="admin-page">
+        <%- include("../layout/sidenav-admin.ejs") %>
+
+            <div class="my-container main">
+                <div class="content-home main-admin">
+                    <h4 class="fw-bold rounded">Dashboard</h4>
+                    <div class="  d-flex d-inline justify-content-center align-items-center mt-4">
+                        <div class="card p-3 my-4">
+                            <div class=" card-title bg-ligth text-center fw-bold fs-5">Total User</div>
+                            <div class="card-body">
+                                <h4 class="text-center"><%- totalUser %> </h4>
+                                <p class="text-center text-secondary mb-0 pt-2">Pengguna</p>
+                            </div>
+                        </div>
+                        <div class="card p-3 mx-3">
+                            <div class=" card-title bg-ligth text-center fw-bold fs-5">Total Board</div>
+                            <div class="card-body">
+                                <h4 class="text-center"><%- totalBoard %></h4>
+                                <p class="text-center text-secondary mb-0 pt-2">Boards</p>
+                            </div>
+                        </div>
+                        <div class="card p-3">
+                            <div class=" card-title bg-ligth text-center fw-bold fs-5">Total Tugas</div>
+                            <div class="card-body">
+                                <h4 class="text-center"><%- totalTask %></h4>
+                                <p class="text-center text-secondary mb-0 pt-2">Tugas</p>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                </div>
+            </div>
+
+            <%- include("../partial/script.ejs") %>
+
+    </body>
+
+</html>
+

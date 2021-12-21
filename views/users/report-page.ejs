@@ -9,15 +9,23 @@
 
             <div class="my-container main report-page">
                 <div class="px-4 content-home">
-                    <h4 class="fw-bold rounded pt-4">Reporting</h4>
+                    <h4 class="fw-bold rounded">Reporting</h4>
                     <p class="text-secondary mb-0">All your task here</p>
                     <hr>
-                    <div class="d-flex d-inline-block filter">
+                    <!-- <div class="d-flex d-inline-block filter">
                         <a href="#" class="text-decoration-none text-white fw-bold text-center rounded">All</a>
                         <a href="#" class="text-decoration-none text-white fw-bold text-center px-2 mx-4 rounded">Completed</a>
-                    </div>
+                    </div> -->
                     <div class="row mx-auto">
-                        <div class="col-6 col-md-4 card-report">
+                        <% for (report of reports) { %>
+                            <%- include('../components/report-list.ejs', {
+                                report
+                            }); %>
+                        <% } %>
+
+
+
+                        <!-- <div class="col-6 col-md-4 card-report">
                             <div class="card my-5">
                                 <div class="d-flex justify-content-center task-info mx-5 mb-3">
                                     <a href="#" class="text-white text-center mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="far fa-file-alt fs-3 rounded-circle pt-2"></i></a>
@@ -40,103 +48,10 @@
                                     <p class=" fw-bold status"><i class="fas fa-exclamation mx-2"></i>Status</p>
                                 </div>
                             </div>
-                        </div>
-
-
-
-                        <div class="col-6 col-md-4 card-report">
-                            <div class="card my-5">
-                                <div class="d-flex justify-content-center task-info mx-5 mb-3">
-                                    <a href="#" class="text-white text-center mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="far fa-file-alt fs-3 rounded-circle pt-2"></i></a>
-                                </div>
-                                <div class="card-title text-center fw-bold">Task Title</div>
-                                <div class="card-body">
-                                    <p class="text-secondary mb-1"><i class="fas fa-thumbtack mx-2"></i>Board</p>
-                                    <p class="mb-1"><i class="far fa-bell mx-2"></i>Durasi</p>
-                                    <p><i class="far fa-check-circle mx-2"></i> 7 lists checked</p>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <p class="mb-0 fw-bold">Deadline</p>
-                                            <p class="text-secondary">13 Januari 2022</p>
-                                        </div>
-                                        <div class="col-5">
-                                            <p class="mb-0 fw-bold">Presentase</p>
-                                            <p class="text-secondary">34%</p>
-                                        </div>
-                                    </div>
-                                    <p class=" fw-bold status"><i class="fas fa-exclamation mx-2"></i>Status</p>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
 
 
-                </div>
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">Task</h5>
-
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex justify-content-center px-0">
-                                <form action="" method="post">
-                                    <div class="row mb-2">
-                                        <div class="col-12 d-flex  align-items-center">
-                                            <label for="title" class="fw-bold">Title</label>
-                                        </div>
-                                        <div class="col-12 ">
-                                            <input type="text" class="form-control my-1" id="name" placeholder="Title" name="title" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-12 col-md-6 d-flex  align-items-center">
-                                            <label for="description" class="fw-bold">Description</label>
-                                        </div>
-                                        <div class="col-12 ">
-                                            <textarea type="text" class="form-control my-1" rows=3 id="alamat" placeholder="Description" name="description" disabled></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-12 col-md-6 d-flex  align-items-center">
-                                            <label for="start_date" class="fw-bold">Start At</label>
-                                        </div>
-                                        <div class="col-12 ">
-                                            <input type="datetime-local" class="form-control my-1" id="start_date" name="start_date" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-2">
-                                        <div class="col-12 col-md-6 d-flex  align-items-center">
-                                            <label for="due_date" class="fw-bold">Due Date</label>
-                                        </div>
-                                        <div class="col-12 ">
-                                            <input type="datetime-local" class="form-control my-1" id="due_date" name="due_date" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-12 col-md-6 d-flex  align-items-center">
-                                            <label for="item" class="fw-bold">List</label>
-                                        </div>
-                                        <div class="col-12  ">
-                                            <ul>
-                                                <li>
-                                                    <p class="mb-0 is-completed">Task 1</p>
-                                                </li>
-                                                <li>
-                                                    <p class="mb-0">Task 1</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partial/head.ejs") %>
+
+    <body class="users-page">
+        <%- include("../layout/sidenav-admin.ejs") %>
+
+            <div class="my-container main">
+                <div class="content-home mx-auto">
+                    <h4 class="fw-bold rounded">Users</h4>
+                    
+                    <div class="table table-responsive tableFixHead shadow-sm ">
+                        <table class="table table-fixed  ">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Birth Date</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% biodatas.forEach(bio => { %>
+    
+    
+                                    <tr>
+                                        <td>
+                                            <%- bio.full_name %> 
+                                            
+                                        </td>
+                                        <td>
+                                            <%- bio.birth_date.toISOString().substring(0, 10).split('-').reverse().join('-') %>
+                                        </td>
+                                        <td>
+                                            <%- bio.User.email %> 
+                                        </td>
+    
+                                        <td>
+                                            <%- bio.phone_number %> 
+                                        </td>
+                                        <td>
+                                            <%- bio.address %> 
+                                        </td>
+                                    </tr>
+                                <% }) %>
+    
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <%- include("../partial/script.ejs") %>
+
+    </body>
+
+</html>
+

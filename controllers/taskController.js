@@ -1,5 +1,7 @@
 const { NOW } = require('sequelize/dist');
+const {User, userBoard, Task, List} = require('../models');
 const db = require('../models/index');
+const Sequelize = require('sequelize');
 
 const edit = (req, res) => {
     res.render('users/task/edit', {
@@ -8,7 +10,7 @@ const edit = (req, res) => {
 }
 
 const create = async (req, res) => {
-    const boards = await db.userBoard.findAll({
+    const boards = await userBoard.findAll({
         where: {
             user_id: req.session.user_id
         }
@@ -21,50 +23,46 @@ const create = async (req, res) => {
 }
 
 const store = async (req, res) => {
+        
 
+    const { board_id, title, description, due_date, start_date, item } = req.body;
     try {
-        // start db transaction
-        await db.sequelize.transaction(async (t) => {
 
-            const { board_id, title, description, due_date, start_date, item } = req.body;
+         await db.sequelize.transaction(async(t) => {
 
-            new_due_date = new Date(due_date);
-            new_start_date = new Date(NOW);
-            const duration = Math.abs(new_due_date - new_start_date) / (1000 * 60 * 60 * 24);
-
-            // insert task using task sequelize model with promise
-            const task = await db.Task.create({
+            const createTask = await Task.create({
                 board_id,
                 title,
                 description,
                 status:"pending",
-                start_date: new_start_date,
-                due_date: new_due_date,
+                start_date: start_date,
+                due_date: due_date,
                 user_id: req.session.user_id,
                 percentage: 0
-                // duration: duration
-            });
+            }) 
 
             // insert list using list array sequelize model with promise    
             for (let i = 0; i < item.length; i++) {    
-                await db.List.create({
-                    task_id: task.id,
+                await List.create({
+                    // task_id: task.id,
                     item: item[i],
                     is_complete: false
                 });
             }
-        });
+        })
 
         return res.status(200).json({
-            message: 'Task created successfully',
+            message: 'Task created successfully'
         });
-    }
-    catch (err) {
+    } catch (err) {
         return res.status(500).json({
             message: 'Something went wrong',
             error: err.message,
         });
+        
     }
+    
+
 }
 module.exports = {
     editTaskPage: edit,

@@ -115,8 +115,7 @@ const login= async(req, res) =>{
             }else if(findEmail.role_id === 2){
                 req.session.email = findEmail.email
                 req.session.role_id = findEmail.role_id
-                req.session.full_name = name.full_name
-                res.redirect('/')
+                res.redirect('/dashboard')
             }
         }
         else if(result !== 'true'){

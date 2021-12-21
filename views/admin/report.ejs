@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partial/head.ejs") %>
+
+    <body class="report-content">
+        <%- include("../layout/sidenav-admin.ejs") %>
+
+
+            <div class="my-container main report-page">
+                <div class="px-4 content-home">
+                    <h4 class="fw-bold rounded">Reporting</h4>
+                    <p class="text-secondary mb-0">All your task here</p>
+                    <hr>
+            
+                    <div class="row mx-auto">
+                        <% for (report of reportsUsers) { %>
+                            <%- include('../components/report-users.ejs', {
+                                report
+                            }); %>
+                        <% } %>
+
+
+            <%- include("../partial/script.ejs") %>
+
+    </body>
+
+</html>

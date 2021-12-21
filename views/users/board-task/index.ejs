@@ -10,11 +10,11 @@
             <div class="my-container main">
                 <div class="px-4 content-home board-menu">
                     <div class="d-flex d-inline-block mb-3">
-                        <h4 class="fw-bold rounded d-flex justify-content-center align-items-center py-1  ">
+                        <h5 class="fw-bold rounded d-flex justify-content-center align-items-center p-1">
                             <%- board.board_name %>
-                        </h4>
+                        </h5>
 
-                        <a href="#" class="fw-bold d-flex justify-content-center align-items-center btn-add text-decoration-none rounded text-white py-1 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-plus-circle mx-2"></i>Create Task</a>
+                        <a href="/task/create" class="fw-bold d-flex justify-content-center align-items-center btn-add text-decoration-none rounded text-white py-1 mx-4"><i class="fas fa-plus-circle mx-2"></i>Create Task</a>
                     </div>
 
                     <div class="d-flex d-inline-block">
@@ -26,7 +26,7 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -87,8 +87,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+            </div>
 
                 <%- include("../../partial/script.ejs") %>
 

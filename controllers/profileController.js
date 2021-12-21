@@ -67,6 +67,7 @@ const store = async (req, res) => {
                 user_id: res.locals.user_id
             }
         })
+        req.session.full_name = full_name
         res.redirect(`/profile`)
 
         // return res.status(200).json({

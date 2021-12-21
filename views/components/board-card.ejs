@@ -1,18 +1,49 @@
 <div class="col-6 col-md-4 mb-4">
     <div class="card" id="progress-board">
-        <div class="d-flex justify-content-center d-inline-block mb-3">
-            <div class="card-title fs-5 fw-bold text-dark  text-center pt-2"></div>
-            <a href="#" class="fw-bold d-flex  align-items-center text-secondary text-decoration-none rounded mx-3"><i class="fas fa-info-circle"></i></a>
+        <div class="d-flex justify-content-center d-inline-block">
+            <div class="card-title fw-bold text-dark text-center pt-2"><%- board.board_name  %></div>
+            <a class="fw-bold d-flex  align-items-center text-secondary text-decoration-none rounded mx-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li onclick="update('<%- board.id%>')"><a class="dropdown-item  mb-1 text-desc" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-pencil-alt mx-2"></i>Update</a></li>
+                <li onclick="delBoard('<%- board.id %>')"><a class="dropdown-item mb-1 text-desc" href="#"><i class="fas fa-trash mx-2"></i>Delete</a></li>
+                <li><a class="dropdown-item mb-1 text-desc" href="/board/<%- board.id %> /task"><i class="fas fa-location-arrow mx-2"></i><%- board.board_name  %> </a></li>
+            </ul>
         </div>
 
         <div class="card-body board-card">
             <div class="d-flex flex-column">
                 <div class="card mb-2 shadow pt-2 px-2 card-item">
-                        
                     <h6 class="fw-bold px-2 text-center">Total Tugas</h6>
-                    <p class="text-info text-center"> <%- board.TasksCount  %>  tugas</p>
+                    <p class="text-info text-center"> <%- board.TasksCount %>  tugas</p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title fw-bold text-center" id="staticBackdropLabel">Update</h4>
+
+                <button id="staticBackdropCloseButton" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="board-update" action="" method="post" >
+                <div class="modal-body">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput" name="board_name" placeholder="youremail@example.com" value="<%- board.board_name %> " required>
+                        <label class="form-label" for=" floatingInput">Name</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button id="board-update-submit" type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
