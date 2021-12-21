@@ -22,7 +22,10 @@ const update = async (req, res) => {
     const total = task.Lists.length
     const percentage = (is_complete / total) * 100
 
-    task.update({
+    // convert percentage to integer
+    const percentage = Math.round(percentage)
+
+    await task.update({
         percentage
     })
 
