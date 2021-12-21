@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('../../partial/head.ejs') %>
+<%- include('../../partial/head.ejs') %>
 
     <body class="update-task">
-        <%- include("../../layout/sidenav.ejs") %>
+        <%- include('../../layout/sidenav.ejs') %>
 
 
             <div class="my-container main ">
@@ -14,13 +14,19 @@
                             <h4 class="fw-bold rounded d-flex justify-content-center align-items-center py-1 text-done">My Task</h4>
                         </div>
                         <div class="card-body mx-3">
-                            <form action="" method="post">
+                            <form id="update-task-form" action="" method="post" >
                                 <div class="row mb-2 ">
                                     <div class="col-12 col-md-6 d-flex  align-items-center">
-                                        <label for="board_name" class="fw-bold">Nama Board</label>
+                                        <label for="board_id" class="fw-bold">Nama Board</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="board_name" name="board_name">
+                                        <select class="form-control my-1" id="board_id" name="board_id">
+                                            <!-- loop boards -->
+                                            <option value="">Pilih Board</option>
+                                            <% for (var i = 0; i < boards.length; i++) { %>
+                                                <option <%- boards[i].id == task.board_id ? 'selected' : '' %> value="<%= boards[i].id %>"><%= boards[i].board_name %></option>
+                                            <% } %>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -28,7 +34,7 @@
                                         <label for="title" class="fw-bold">Judul</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="title" name="title">
+                                        <input type="text" class="form-control my-1" id="title" name="title" value="<%- task.title %>" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -36,15 +42,15 @@
                                         <label for="description" class="fw-bold">Deskripsi</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="description" name="description">
+                                        <textarea id="description" name="description" class="form-control" required><%- task.description %></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
                                     <div class="col-12 col-md-6 d-flex  align-items-center">
-                                        <label for="start-date" class="fw-bold">Mulai</label>
+                                        <label for="start_date" class="fw-bold">Mulai</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="start-date" name="start-date">
+                                        <input type="text" class="form-control my-1" id="start_date" name="start_date" value="<%- task.new_start_date %>" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
@@ -52,40 +58,31 @@
                                         <label for="due_date" class="fw-bold">Deadline</label>
                                     </div>
                                     <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="due_date" name="due_date">
-                                    </div>
-                                </div>
-                                <div class="row mb-2 ">
-                                    <div class="col-12 col-md-6 d-flex  align-items-center">
-                                        <label for="duration" class="fw-bold">Duration</label>
-                                    </div>
-                                    <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="duration" name="duration" disabled>
+                                        <input type="text" class="form-control my-1" id="due_date" name="due_date" value="<%- task.new_due_date%>" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2 ">
                                     <div class="col-12 col-md-6 d-flex  align-items-center">
                                         <label for="item" class="fw-bold">List Item</label>
-                                        <button type="submit" class="btn btn-light ms-3 py-0"><i class="fas fa-plus-circle py-0 mx-2"></i></button>
+                                        <button type="button" class="btn btn-light ms-3 py-0" onclick="duplicateListItem()"><i class="fas fa-plus-circle py-0 mx-2"></i></button>
                                     </div>
                                     <div class="col-12 col-md-0 d-flex align-items-center">
-                                        <div class="form-outline">
-                                            <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item">
-                                            <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item">
-                                            <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item">
+                                        <div class="form-outline list-item-parent">
+                                            <% for( list of task.Lists ) { %>
+                                                
+                                                <div class="list-item-child">
+                                                    <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item[]" value="<%- list.item %> ">
+                                                    <button type="button" class="btn btn-sm btn-danger" onclick="deleteList(this)">
+                                                        <i class="fas fa-trash py-0 mx-2"></i>
+                                                    </button>
+                                                </div>
+
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-2 ">
-                                    <div class="col-12 col-md-6 d-flex  align-items-center">
-                                        <label for="status" class="fw-bold">Status Tugas</label>
-                                    </div>
-                                    <div class="col-12 col-md-10 d-flex justify-content-center">
-                                        <input type="text" class="form-control my-1" id="status" name="status" disabled>
-                                    </div>
-                                </div>
                                 <div class="d-flex justify-content-center mb-0">
-                                    <button class="btn btn-success fw-bold" type="submit">Update</button>
+                                        <button type="submit" id="update-task-form-submit" class="btn btn-info fw-bold text-white" type="submit">Update</button>
                                 </div>
                             </form>
 
@@ -99,3 +96,61 @@
     </body>
 
 </html>
+
+<template id="list-item-template">
+    <div class="list-item-child">
+        <input type="text" class="form-control my-2" id="item" placeholder="New item" name="item[]">
+        <button type="button" class="btn btn-sm btn-danger" onclick="deleteList(this)">
+            <i class="fas fa-trash py-0 mx-2"></i>
+        </button>
+    </div>
+</template>
+
+<script>
+    document.getElementById('update-task-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let button = document.getElementById('update-task-form-submit');
+        button.innerHTML = 'Updating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;        
+
+        let form = document.getElementById('update-task-form');
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });        
+
+         // transform item[] into json
+         let item = document.querySelectorAll('.list-item-child input');
+        let itemJson = [];
+        for (var i = 0; i < item.length; i++) {
+            itemJson.push(item[i].value);
+        }
+        jsonData['item'] = itemJson;
+
+        // unset item[]
+        delete jsonData['item[]'];
+
+        let url = '/task/<%- task.id %>/update';
+        axios.post(url, jsonData)
+        .then(function (response) {
+            console.log(response);
+    
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
+            );
+            
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Update';
+            button.disabled = false;
+        });
+
+    });
+</script>
