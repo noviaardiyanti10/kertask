@@ -1,48 +1,52 @@
 <script>
-    function update(id){
+    
+    let arr = document.getElementsByClassName('board-update');
 
-        document.getElementById('board-update').addEventListener('submit', function(e) {
-            e.preventDefault();
+    Array.from(arr).forEach(function(element) {
+        element.addEventListener('submit', updateFunction);
+    });
 
-            let button = document.getElementById('board-update-submit');
-            button.innerHTML = 'Creating <i class="fas fa-spinner fa-spin"></i>';
-            button.disabled = true;        
 
-            let form = document.getElementById('board-update');
-            // transform form into json
-            let formData = new FormData(form);
-            let jsonData = {};
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });        
+    function updateFunction(e) {
+        e.preventDefault();
 
-            let id = jsonData[board_id]
-            axios.post('/board/'+ id, jsonData)
-            .then(function (response) {
-                console.log(response);
+        let button = e.target.getElementsByClassName('update-submit')[0];
+        button.innerHTML = 'Updating <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;
 
-                // close modal vanilla js
-                document.getElementById('staticBackdropCloseButton').click();
-
-                // empty form
-                document.getElementById('board-update').reset();
-
-                Swal.fire(
-                    'Success!',
-                    response.data.message,
-                    'success'
-                ).then(function() {
-                    location.reload();
-                });
-                
-            }).catch(function (error) {
-                console.log(error);
-            }).then(function () {
-                button.innerHTML = 'Create';
-                button.disabled = false;
-            });
-
+        let form = e.target;
+        // transform form into json
+        let formData = new FormData(form);
+        let jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
         });
-    }
+
+        var id = jsonData['board_id']
+
+        axios.post('board/' + id, jsonData)
+        .then(function (response) {
+            console.log(response);
+
+            // get button from form parentnode
+            let button = e.target.parentNode.getElementsByTagName('button')[0];
+            button.click();
+
+
+            Swal.fire(
+                'Success!',
+                response.data.message,
+                'success'
+            ).then(function() {
+                    location.reload();
+                });;
+
+        }).catch(function (error) {
+            console.log(error);
+        }).then(function () {
+            button.innerHTML = 'Update';
+            button.disabled = false;
+        });
+    } 
 
 </script>
