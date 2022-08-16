@@ -57,7 +57,7 @@
                                         <label for="email" class="fw-bold">Email</label>
                                     </div>
                                     <div class="col-12 col-md-10">
-                                        <input type="email" class="form-control my-1" id="email" placeholder="example@axample.com" name="email" value="<%=biodata_user.User.email%>">
+                                        <input type="email" class="form-control my-1" id="email" placeholder="example@axample.com" name="email" value="<%=biodata_user.User.email%>" disabled>
                                         <% if(message.length > 0){ %> 
                                             <p class="text-danger"><%=message%></p>
                                         <% } %> 

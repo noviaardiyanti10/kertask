@@ -107,6 +107,21 @@
 </template>
 
 <script>
+    function duplicateListItem()
+    {
+        const listItemTemplate = document.querySelector('#list-item-template');
+        const listItemParent = document.querySelector('.list-item-parent');
+        const listItem = listItemTemplate.content.cloneNode(true);
+        listItemParent.appendChild(listItem);
+    }
+
+
+    
+    function deleteList(node)
+    {    
+        // remove this closest parent with list-item-child class
+        node.closest('.list-item-child').remove();
+    }
     document.getElementById('update-task-form').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -137,13 +152,15 @@
         axios.post(url, jsonData)
         .then(function (response) {
             console.log(response);
-    
+
 
             Swal.fire(
                 'Success!',
                 response.data.message,
                 'success'
-            );
+            ).then(function(){
+                window.location.href = response.data.redirect;
+            });
             
         }).catch(function (error) {
             console.log(error);

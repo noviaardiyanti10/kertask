@@ -23,6 +23,8 @@ const edit = async (req, res) => {
         }]
     });
 
+    
+
     // format 31-Aug-2021
     task.new_start_date = moment(task.start_date).format('DD-MMM-YYYY');
     task.new_due_date = moment(task.due_date).format('DD-MMM-YYYY');
@@ -151,8 +153,10 @@ const update = async (req, res) => {
         })
 
         return res.status(200).json({
-            message: 'Task updated successfully'
+            message: 'Task updated successfully',
+            redirect: `/board/${board_id}/task` 
         });
+
     } catch (err) {
         return res.status(500).json({
             message: 'Something went wrong',

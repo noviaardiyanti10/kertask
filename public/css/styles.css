@@ -528,3 +528,7 @@ table {
 .users-page{
     overflow: hidden;
 }
+
+.fa-circle{
+    font-size: 0.8rem !important;
+}

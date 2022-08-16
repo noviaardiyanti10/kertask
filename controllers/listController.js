@@ -23,16 +23,25 @@ const update = async (req, res) => {
     const percentage = Math.round((is_complete / total) * 100)
 
     // convert percentage to integer
-  
-
+    const status = statusTask(percentage)
     await task.update({
-        percentage
+        percentage,
+        status
     }).catch(err => console.log(err))
     console.log(percentage)
+    console.log(status)
 
-    return res.status(200).json({
-        message: 'List updated successfully'
-    });
+    // return res.status(200).json({
+    //     message: 'List updated successfully'
+    // });
+}
+
+function statusTask(percentage){
+    if(percentage === 100){
+        return 'completed'
+    }else{
+        return 'pending'   
+    }
 }
 
 module.exports = {

@@ -1,4 +1,5 @@
-const {User, Task, userBoard, List} = require('../models')
+const {User, Task, userBoard, List} = require('../models');
+const moment = require('moment');
 
 const report = async(req, res) => {
     const reports = await Task.findAll({
@@ -12,6 +13,7 @@ const report = async(req, res) => {
         let today = new Date()
         const new_due_date = new Date(reportDate.due_date);
         const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
+        reportDate.new_due_date =  moment(reportDate.due_date).format("DD-MMM-YYYY");
         reportDate.duration = duration
     }
 
@@ -29,6 +31,7 @@ const reportUsers = async(req, res) => {
         let today = new Date()
         const new_due_date = new Date(reportDate.due_date);
         const duration = Math.floor(Math.abs(new_due_date - today) / (1000 * 60 * 60 * 24));
+        reportDate.new_due_date =  moment(reportDate.due_date).format("DD-MMM-YYYY");
         reportDate.duration = duration
     }
 

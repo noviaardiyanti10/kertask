@@ -1,4 +1,4 @@
-const { DATE } = require('sequelize/dist');
+const { DATE, Op } = require('sequelize/dist');
 const {Users, userBoard, Task} = require('../models');
 
 const landingPage = async (req, res) => {
@@ -54,7 +54,7 @@ const homePage = async (req, res) => {
             ['due_date', "ASC"]
         ],
         where: {
-            user_id: req.session.user_id
+            [Op.and]: [{ user_id: req.session.user_id}, {status: 'pending'}]
         }, 
         limit: 2
     })
