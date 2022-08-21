@@ -7,7 +7,7 @@ const session = require("express-session");
 const cookieSession = require('cookie-session')
 const logger = require("./middleware/logger");
 
-const PORT = process.env.PORT || 8000
+const { PORT = 8000 } = process.env;
 
 app.use(cookieSession({
     name: 'session',
@@ -38,3 +38,4 @@ app.use(router)
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
